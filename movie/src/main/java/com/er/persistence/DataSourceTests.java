@@ -6,6 +6,8 @@ import java.sql.Connection;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +22,11 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class DataSourceTests {
 
-	@Setter(onMethod_ = {@Autowired} )
+	@Setter(onMethod_ = {@Autowired})
 	private DataSource dataSource;
+	
+	@Setter(onMethod_ = {@Autowired} )
+	private SqlSessionFactory salSessionFactory;
 	
 	@Test
 	public void testConnection() {
@@ -34,6 +39,19 @@ public class DataSourceTests {
 			fail(e.getMessage());
 		}
 		
+	}
+	
+	@Test
+	public void testMybatis() {
+		
+		try (SqlSession session = salSessionFactory.openSession(); Connection conn = session.getConnection();) {
+			
+			log.info(session);
+			log.info(conn);
+			
+		} catch (Exception e) {
+			fail(e.getMessage());
+		}
 	}
 	
 }
