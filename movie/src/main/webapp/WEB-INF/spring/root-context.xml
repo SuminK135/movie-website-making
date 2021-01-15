@@ -13,9 +13,8 @@
 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/project" /> -->
 		<!-- log4jdbc -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/employees" />
-		
-		<property name="username" value="project" />
+		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://localhost:3306/project" />
+		<property name="username" value="root" />
 		<property name="password" value="123456" />
 	</bean>
 	
@@ -24,6 +23,7 @@
 		<constructor-arg ref="hikariConfig" />
 	</bean>
 	
+	<!-- myBatis configuration -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
