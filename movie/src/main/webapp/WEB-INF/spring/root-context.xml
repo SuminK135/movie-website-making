@@ -31,5 +31,6 @@
 	<mybatis-spring:scan base-package="com.er.mapper"/>
 	
 	<context:component-scan base-package="com.er.sample"></context:component-scan>
+	<context:component-scan base-package="com.er.service"></context:component-scan>
 		
 </beans>
