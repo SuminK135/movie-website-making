@@ -27,7 +27,7 @@ public class CommonExceptionAdvice {
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handle404(NoHandlerFoundException e) {
 		
-		return "404error";
+		return "error404";
 	}
 	
 }

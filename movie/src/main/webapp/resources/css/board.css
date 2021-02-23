@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#top-img {
+	   background-image: url("../images/cinema2.jpg");
+       background-size: cover;
+       min-height: 0.2vh;
+       background-position: center top;
+       background-repeat: no-repeat;
+}
