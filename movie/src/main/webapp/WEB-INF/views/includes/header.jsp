@@ -21,7 +21,7 @@
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/resources/images/crown.png">
 	<!-- CSS -->
-	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+	<!-- <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css"> -->
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<style type="text/css">
@@ -90,17 +90,23 @@
 					<div id="slide-menu" class="slide-menu">
 						<ul>
 							<li><a href="#">세부정보1</a></li>
+							<li></li>
 							<li><a href="#">세부정보2</a></li>
+							<li></li>
 							<li><a href="#">세부정보3</a></li>
 						</ul>
 						<ul>
 							<li><a href="/board/list">게시판</a></li>
-							<li><a href="#">QnA</a></li>
+							<li></li>
+							<li><a href="#">Q n A</a></li>
+							<li></li>
 							<li><a href="#">공지사항</a></li>
 						</ul>
 						<ul>
 							<li><a href="#">킹무비 소개</a></li>
+							<li></li>
 							<li><a href="#">CONTACT</a></li>
+							<li></li>
 							<li><a href="#">기능 목록</a></li>
 						</ul>
 						<ul>

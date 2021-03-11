@@ -25,7 +25,9 @@
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/resources/images/crown.png" />
 	<!-- CSS -->
+	<!--
 	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+ 	-->
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/css/jquery.bxslider.css" />
 	<link rel="stylesheet" href="/resources/css/style.css" />
@@ -92,7 +94,7 @@
 		<div class="nav-bar">
 			<h1><a href="/index"><img class="logo" alt="킹무비 홈" src="/resources/images/logo2.svg"></a></h1>
 			<nav id="nav-menu" class="nav-menu">
-				<div id="menu-animate">
+				<div id="menu-animate" class="menu-animate">
 					<ul class="main-nav">
 						<li><a href="#">영화정보</a></li>
 						<li><a href="/board/list">커뮤니티</a></li>
@@ -103,17 +105,23 @@
 					<div id="slide-menu" class="slide-menu">
 						<ul>
 							<li><a href="#">세부정보1</a></li>
+							<li></li>
 							<li><a href="#">세부정보2</a></li>
+							<li></li>
 							<li><a href="#">세부정보3</a></li>
 						</ul>
 						<ul>
 							<li><a href="/board/list">게시판</a></li>
-							<li><a href="#">QnA</a></li>
+							<li></li>
+							<li><a href="#">Q n A</a></li>
+							<li></li>
 							<li><a href="#">공지사항</a></li>
 						</ul>
 						<ul>
 							<li><a href="#">킹무비 소개</a></li>
+							<li></li>
 							<li><a href="#">CONTACT</a></li>
+							<li></li>
 							<li><a href="#">기능 목록</a></li>
 						</ul>
 						<ul>
@@ -226,6 +234,9 @@
 		<div class="video-box">
 			<h1>PREVIEW</h1>
 			<iframe src="https://www.youtube.com/embed/C2_e4qT1onA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		
+			<!-- <iframe src="https://www.youtube.com/embed/zS0BA8FnnKc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		 -->
 		</div>
 		<!-- <div class="video-box">
 			<h3>예고편</h3>

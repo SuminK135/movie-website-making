@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* @import url(reset.css); */
+@import url(ress.min.css);
 /*
 font-family: 'Jua', sans-serif;
 font-family: 'Noto Sans KR', sans-serif;
@@ -35,8 +35,8 @@ img {
 /* header
 ------------------------------ */
 .logo {
-       width: 140px;
-       height: 70px;
+       width: 100px;
+       height: 50px;
        /* margin-top: 5px; */
        /* margin-right: 30px; */
 }
@@ -44,8 +44,9 @@ img {
 .main-nav {
        display: flex;
        font-size: 1.5rem;
-       margin-top: 34px;
+       margin-top: 20px;
        list-style: none;
+       margin-bottom: 10px;
 }
 
 .main-nav li {
@@ -112,10 +113,10 @@ img {
 	display: none;
 	justify-content: flex-end;
 	position: absolute;
-	background-color: black;
-	opacity: 0.8;
-	color: #fff;
-	border: 1px solid black;
+	background-color: #fff;
+	/* opacity: 0.9; */
+	color: black;
+	border: 2px solid #BCB4B4;
 	border-radius: 6px;
 	padding: 5px 0 10px;
 }
@@ -126,23 +127,36 @@ img {
 
 #slide-menu ul {
 	list-style: none;
-	margin-left: 42px;
+	margin-left: 43px;
+	/* margin-top: 5px;
+	margin-bottom: 5px; */
 }
 
 #slide-menu li {
+	font-family: 'Noto Sans KR', sans-serif;
+	/* border-bottom: dotted; */
+	text-align: center;
+}
+
+#slide-menu li:nth-child(2n+1) {
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+#slide-menu li:nth-child(2n) {
 	border-bottom: dotted;
-	border-bottom-width: 2px;
-	margin-bottom: 5px;
+	border-bottom-width: 1px;
 }
 
 #slide-menu a {
-	color: #fff;
-	opacity: 1;
-	font-size: 15px;
+	color: black;
+	font-weight: bold;
+	/* opacity: 1; */
+	font-size: 16px;
 }
 
 #slide-menu a:hover {
-	color: #DB8C8C;
+	color: #04d;
 }
 
 
@@ -352,9 +366,15 @@ img {
 /* Footer
 ------------------------------ */
 footer {
-       background: #333333;
+       background: #000;
+       opacity: 0.7;
        text-align: center;
-       padding: 15px 0;
+       padding: 10px 0;
+       position: fixed;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       
 }
 
 footer p {
@@ -451,6 +471,7 @@ footer p {
 		width: 100%;
 		height: 100%;
 		background-color: #FDFDF6;
+		/* border: 1px solid #aaa; */
 		z-index: 9999;
 		color: #fff;
 	}

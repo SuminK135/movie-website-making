@@ -53,13 +53,13 @@
 	
 		$(win).trigger("resize");
 		
-		$(document).on("mouseover focus", ".pc #nav-menu ul li a, .tablet #nav-menu ul li a", menuSlide);
+		$(document).on("mouseover", ".pc .main-nav li:not(:last), .tablet .main-nav li:not(:last)", menuSlide);
 
 		function menuSlide() {
 			$("#slide-menu").show();
 		}
 		
-		$(document).on("mouseleave", ".pc #menu-animate, .tablet #menu-animate", slideLeave);
+		$(document).on("mouseleave", ".pc .nav-menu, .tablet .nav-menu", slideLeave);
 		
 		function slideLeave() {
 			$("#slide-menu").hide();
@@ -81,16 +81,12 @@
 	$(function() {
 		$(".sub-menu span").on({
 			"mouseover" : function( ) {
-				$(this)
-				.css({"color": "#04d"}).css({"text-decoration":"underline"});
+				$(this).css({"color": "#04d"}).css({"text-decoration":"underline"});
 			},
 			"mouseout" : function( ) {
-				$(this)
-				.css({"color":"black"}).css({"text-decoration":"none"});
+				$(this).css({"color":"black"}).css({"text-decoration":"none"});
 			}
 		});
 	});
 	
-	
-
 }(window, jQuery));

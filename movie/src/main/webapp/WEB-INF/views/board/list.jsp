@@ -13,9 +13,9 @@
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" href="/resources/images/crown.png">
 	<!-- CSS -->
-	<link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+	<!-- <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css"> -->
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
-	<link rel="stylesheet" href="/resources/css/board.css" />
+	<link rel="stylesheet" href="/resources/css/board_list.css" />
 	<style type="text/css"></style>
 	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
@@ -29,12 +29,13 @@
 
 	<div id="top-img"></div>
 
-	<div class="board wrapper">
+	<div class="board wrapper" id="for-order">
+	
 		<div id="board-list" class="board-list">
 			<!-- 상단 디자인 -->
 			<div class="con_title">
 				<h3>게시판</h3>
-				<p>HOME &gt; 게시판 &gt; <strong>게시판</strong></p>
+				<p>HOME &gt; 커뮤니티 &gt; <strong>게시판</strong></p>
 			</div>
 			<div class="con_txt">
 				<div class="contents_sub">
@@ -57,7 +58,7 @@
 							<tr>
 								<td>&nbsp;</td>
 								<td>1</td>
-								<td class="left"><a href="board_view1.jsp"><img src="../../images/icon_hot.gif" alt="미리보기">&nbsp;adfs</a>&nbsp;<img src="../../images/icon_hot.gif" alt="HOT"></td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="/resources/images/icon_hot.gif" alt="HOT"></td>
 								<td>asdfa</td>
 								<td>2017-01-31</td>
 								<td>6</td>
@@ -65,8 +66,80 @@
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
-								<td>1</td>
-								<td class="left"><a href="board_view1.jsp"><img src="../../images/icon_hot.gif" alt="미리보기">&nbsp;adfas</a>&nbsp;<img src="../../images/icon_hot.gif" alt="HOT"></td>
+								<td>2</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>3</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>4</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>5</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>6</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>7</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>8</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>9</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
+								<td>asdfa</td>
+								<td>2017-01-31</td>
+								<td>6</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>10</td>
+								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
 								<td>asdfa</td>
 								<td>2017-01-31</td>
 								<td>6</td>
@@ -84,15 +157,15 @@
 		</div>
 		
 		<aside>
-			<h3>커뮤니티</h3>
-			<ul>
-				<li>게시판</li>
-				<li>QnA</li>
-				<li>공지사항</li>
+			<h3 class="side-title">커뮤니티</h3>
+			<ul class="side-menu">
+				<li><a href="">게시판</a></li>
+				<li><a href="">QnA</a></li>
+				<li><a href="">공지사항</a></li>
 			</ul>
-			<h3>게시판 소개</h3>
+			<h3 class="side-title">게시판 소개</h3>
 			<p>
-				누구나 자유롭게 토론할 수 있는 커뮤니티 게시판입니다.
+				누구나 자유롭게 소통하는 커뮤니티 게시판입니다.
 			</p>
 		</aside>
 		
