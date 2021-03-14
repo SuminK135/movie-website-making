@@ -159,6 +159,26 @@ img {
 	color: #04d;
 }
 
+.search[style*="display: block"] {
+	display: flex !important;
+}
+
+.search {
+	display: none;
+	padding: 5px 5px;
+	border: 2px solid #5f5f5f;
+	border-radius: 6px;
+	font-size: 12px;
+	height: 40px;
+	background: #fff;
+	position: absolute;
+}
+
+.search-wrap {
+	display: flex;
+	justify-content: flex-end;
+}
+
 
 /* home
 ------------------------------ */

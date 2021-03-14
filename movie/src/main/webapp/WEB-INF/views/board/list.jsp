@@ -34,7 +34,7 @@
 		<div id="board-list" class="board-list">
 			<!-- 상단 디자인 -->
 			<div class="con_title">
-				<h3>게시판</h3>
+				<!-- <h3>게시판</h3> -->
 				<p>HOME &gt; 커뮤니티 &gt; <strong>게시판</strong></p>
 			</div>
 			<div class="con_txt">
@@ -47,19 +47,19 @@
 						<table>
 							<tr>
 							<!-- 60% -->
-								<th width="3%">&nbsp;</th>
-								<th width="5%">번호</th>
+								<th width="1%">&nbsp;</th>
+								<th width="7%">번호</th>
 								<th>제목</th>
-								<th width="10%">글쓴이</th>
-								<th width="17%">등록일</th>
-								<th width="5%">조회</th>
-								<th width="3%">&nbsp;</th>
+								<th width="12%">글쓴이</th>
+								<th width="19%">등록일</th>
+								<th width="7%">조회</th>
+								<th width="1%">&nbsp;</th>
 							</tr>
 							<tr>
 								<td>&nbsp;</td>
 								<td>1</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="/resources/images/icon_hot.gif" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -68,7 +68,7 @@
 								<td>&nbsp;</td>
 								<td>2</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -77,7 +77,7 @@
 								<td>&nbsp;</td>
 								<td>3</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -86,7 +86,7 @@
 								<td>&nbsp;</td>
 								<td>4</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -95,7 +95,7 @@
 								<td>&nbsp;</td>
 								<td>5</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -104,7 +104,7 @@
 								<td>&nbsp;</td>
 								<td>6</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -113,7 +113,7 @@
 								<td>&nbsp;</td>
 								<td>7</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -122,7 +122,7 @@
 								<td>&nbsp;</td>
 								<td>8</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -131,7 +131,7 @@
 								<td>&nbsp;</td>
 								<td>9</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>
@@ -140,7 +140,7 @@
 								<td>&nbsp;</td>
 								<td>10</td>
 								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>asdfa</td>
+								<td>writer</td>
 								<td>2017-01-31</td>
 								<td>6</td>
 								<td>&nbsp;</td>

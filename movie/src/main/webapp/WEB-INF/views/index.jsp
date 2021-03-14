@@ -99,7 +99,7 @@
 						<li><a href="#">영화정보</a></li>
 						<li><a href="/board/list">커뮤니티</a></li>
 						<li><a href="#">ABOUT</a></li>
-						<li><a href="#"><img class="search-logo" alt="검색" src="/resources/images/search.png"></a></li>
+						<li><img class="search-logo" alt="검색" src="/resources/images/search.png" style="cursor: pointer"></li>
 					</ul>
 					
 					<div id="slide-menu" class="slide-menu">
@@ -130,8 +130,16 @@
 					</div>
 				</div>
 			</nav>
+			
 		</div>
 
+		<div class="search-wrap">
+			<div class="search">
+				<input type="text">
+				<button class="search-btn">검색</button>
+			</div>
+		</div>
+					
 	</header>
 </div>
 

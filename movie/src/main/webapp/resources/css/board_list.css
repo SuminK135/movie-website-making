@@ -20,6 +20,7 @@ aside {
 	/* padding: 40px 20px 40px; */
 	font-size: 13px;
 	line-height: 30px;
+	margin-bottom: 60px;
 }
 
 .side-title {
@@ -63,7 +64,7 @@ aside p {
 #for-order {
 	display: flex;
 	justify-content: space-between;
-	margin: 30px auto;
+	margin-top: 30px;
 	font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -296,4 +297,38 @@ a:active {
 .txt_orange { 
 	font:bold 12px verdana;
 	color:#ff7e00; 
+}
+
+/* Mobile Version
+------------------------------ */
+@media (max-width: 800px) {
+	
+	#for-order {
+		flex-direction: column;
+	}
+	
+	.board-list, aside {
+		width: 100%;
+	}
+	
+	.side-menu {
+		margin-bottom: 30px;
+	}
+	
+	.side-title {
+		font-size: 1rem;
+	}
+	
+	.con_title {
+		font-size: 12px;
+	}
+	
+	.board_top {
+		font-size: 12px;
+	}
+	
+	table {
+		font-size: 10px;
+	}
+	
 }

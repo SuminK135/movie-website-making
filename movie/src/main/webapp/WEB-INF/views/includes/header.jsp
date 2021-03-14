@@ -116,7 +116,14 @@
 				</div>
 			</nav>
 		</div>
-
+		
+			<div class="search-wrap">
+				<div class="search">
+					<input type="text">
+					<button class="search-btn">검색</button>
+				</div>
+			</div>
+		
 	</header>
 </div>
 

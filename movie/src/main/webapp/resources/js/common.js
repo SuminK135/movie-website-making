@@ -77,16 +77,27 @@
 
 	});
 
-
 	$(function() {
 		$(".sub-menu span").on({
-			"mouseover" : function( ) {
+			"mouseover" : function() {
 				$(this).css({"color": "#04d"}).css({"text-decoration":"underline"});
 			},
-			"mouseout" : function( ) {
+			"mouseout" : function() {
 				$(this).css({"color":"black"}).css({"text-decoration":"none"});
 			}
 		});
 	});
+	
+	
+	$(function() {
+		
+		$(".search-btn").button();
+		
+		$(".main-nav li:last").on("click", function() {
+			$(".search").toggle("fade");
+		});
+		
+	});
+	
 	
 }(window, jQuery));
