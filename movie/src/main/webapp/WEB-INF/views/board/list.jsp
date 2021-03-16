@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +29,8 @@
 
 	<%@include file="../includes/header.jsp" %>
 
-	<div id="top-img"></div>
+	<!-- <div id="top-img"></div> -->
+	<hr>
 
 	<div class="board wrapper" id="for-order">
 	
@@ -55,101 +58,26 @@
 								<th width="7%">조회</th>
 								<th width="1%">&nbsp;</th>
 							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>1</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="/resources/images/icon_hot.gif" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>2</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>3</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>4</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>5</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>6</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>7</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>8</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>9</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-								<td>10</td>
-								<td class="left"><a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;게시글 제목입니다.</a>&nbsp;<img src="" alt="HOT"></td>
-								<td>writer</td>
-								<td>2017-01-31</td>
-								<td>6</td>
-								<td>&nbsp;</td>
-							</tr>
+							<c:forEach items="${list}" var="board">
+								<tr>
+									<td>&nbsp;</td>
+									<td><c:out value="${board.seq}"/></td>
+									<td class="left">
+										<a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;<c:out value="${board.subject}"/></a>
+										&nbsp;
+										<img src="/resources/images/icon_hot.gif" alt="HOT">
+									</td>
+									<td><c:out value="${board.writer}"/></td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.wdate}" /> </td>
+									<td><c:out value="${board.hit}"/></td>
+									<td>&nbsp;</td>
+								</tr>
+							</c:forEach>
 						</table>
 					</div>	
 					<!--//게시판-->
 					<div class="align_right">
-						<button type="button" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='board_write1.jsp'">글쓰기</button>
+						<button type="button" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='/board/register'">글쓰기</button>
 					</div>
 				</div>
 			</div>

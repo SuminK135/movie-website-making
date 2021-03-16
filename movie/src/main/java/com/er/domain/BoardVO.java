@@ -1,5 +1,7 @@
 package com.er.domain;
 
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -13,6 +15,6 @@ public class BoardVO {
 	private String content;
 	private int hit;
 	private String wip;
-	private String wdate;
+	private Date wdate;
 	
 }
