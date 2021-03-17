@@ -1,9 +1,15 @@
 .register {
+	margin-top: 30px;
+	margin-bottom: 60px;
+}
+
+.register {
 	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
 }
 
 /*common add */
-caption,legend,.blind {
+/* caption,legend,.blind {
 	visibility:hidden; 
 	overflow:hidden; 
 	position:absolute; 
@@ -14,7 +20,7 @@ caption,legend,.blind {
 	font-size:0; 
 	line-height:0; 
 	text-align:left;
-}
+} */
 
 /* input */
 button { 
@@ -28,19 +34,18 @@ button {
 	background-position:top left; 
 }
 
-textarea { 
+/* textarea { 
 	height:120px; 
 	border:1px solid #cecece;
-	color: white;
-}
+} */
 
-select { 
+/* select { 
 	height:26px; 
 	padding:2px; 
 	border:1px solid #cecece; 
 	font-size:12px; color:#444;
 	vertical-align:middle;
-}
+} */
 
 table { 
 	border-collapse:collapse; 
@@ -65,20 +70,22 @@ a:active {
 	text-decoration: none;
 }
 
-textarea {width:100%;}
+/* textarea {width:100%;} */
 
-.site_navi { 
+/* .site_navi { 
 	width:100%; 
 	text-align:right; 
 	font-size:11px; 
 	color:#838383; 
 	border-bottom:1px solid #ddd; 
 	padding-bottom:7px;
-}
+} */
+
 .contents_sub { 
 	width:100%; 
 	margin:0;
 }
+
 .contents_sub table { 
 	width:100%; 
 	border-collapse:collapse; 
@@ -87,43 +94,48 @@ textarea {width:100%;}
 .board_write {
 	border-top:1px solid #cecece;
 }
+
 .board_write th, .board_write td { 
-	height:25px; 
+	height:30px; 
 	text-align:left; 
 	padding:8px; 
-	border-bottom:1px solid #dadada; 
+	border-bottom:1px solid #cecece; 
 }
 .board_write th { 
-	color:#464646; 
+	color:#fff; 
 	font-weight:600; 
-	background-color:#f9f9fb; 
+	background-color:#5f5f5f; 
 }
 .board_write td { color:#797979; }
 
 .board_write_input { 
-	border:1px solid #d1d1d1; 
-	height:20px; 
-	width:500px; 
+	background: #fff;
+	border:1px solid #cecece; 
+	height:25px;
+	width:100%; 
 }
-.board_write_input_300 { 
-	border:1px solid #d1d1d1; 
+
+/* .board_write_input_300 { 
+	border:1px solid #cecece; 
 	height:20px; 
-	width:100px; 
-}
+	width:100px;
+} */
 .board_write_input_100 { 
-	border:1px solid #d1d1d1; 
-	height:20px; 
-	width:100px; 
+	background: #fff;
+	border:1px solid #cecece;
+	height:25px; 
+	width:150px; 
 }
-.board_write td.tip { color:#7ab5df; }
+
+/* .board_write td.tip { color:#7ab5df; }
 
 .board_login_input { 
 	border:1px solid #cecece; 
 	height:24px; 
 	width:100px;
-}
+} */
 
-.coment_input { 
+/* .coment_input { 
 	border:1px solid #c5c5c5; 
 	background-color:#f3fbff; 
 	height:20px; 
@@ -133,14 +145,20 @@ textarea {width:100%;}
 	border:1px solid #c5c5c5; 
 	background-color:#f3fbff; 
 	height:60px; 
-}
+} */
 
-.board_editor_area{
+/*content*/
+.board_editor_area {
 	width:100%; 
 	height:200px;
+	background: #fff;
 }
 
-.page {
+.board_write textarea {
+	border:1px solid #cecece;
+}
+
+/* .page {
 	text-align:right; 
 	font:11px verdana; 
 	padding:5px
@@ -161,9 +179,9 @@ textarea {width:100%;}
 	border-bottom:1px dotted #d2d2d2;
 	word-wrap: break-word; 
 	word-break: break-all;
-}
+} */
 
-#upload_thumb_row.hide{display: none;}
+/* #upload_thumb_row.hide{display: none;}
 
 #upload_list div {padding:5px 0 0 0}
 #upload_list div a{padding:0 0 0 3px}
@@ -193,12 +211,12 @@ textarea {width:100%;}
 	border:none; 
 	opacity:1; 
 	cursor: pointer;
-}
+} */
 
 /* Button */
 .btn_write { 
 	display:inline-block; 
-	background:#5f5f5f; 
+	background:#5f5f5f;
 	border:1px solid #404144;
 	padding:6px 17px 7px 17px;
 }
@@ -208,13 +226,14 @@ textarea {width:100%;}
 	border:1px solid #bcbcbc;
 	padding:6px 17px 7px 17px;
 }
-.btn_txt01 { 
-	color:#fff; 
-	font-weight:600; 
+.btn_area .btn_txt01 {
+	color: #fff;
+	font-weight: 600;
 }
-.btn_txt02 { 
-	color:#1f1f1f; 
-	font-weight:600; 
+
+.btn_area .btn_txt02 { 
+	color: #5f5f5f;
+	font-weight: 600;
 }
 
 /* Align*/
@@ -224,24 +243,49 @@ textarea {width:100%;}
 }
 .align_left {float:left; }
 .align_right {float:right;}
-.align_right button {}
-.align_left button {}
-.tR {text-align:right;}
 
-/* Color */
-.txt_blue { 
-	font-weight:bold; 
-	color:#7ab5df; 
+.tr {text-align:right;}
+
+.register .con_txt { clear:both; }
+
+/* infomation agreement
+------------------------------ */
+
+.agree td {
+	text-align:left;
+	border:1px solid #cecece;
+	padding: 5px;
 }
-.txt_orange { 
-	font:bold 12px verdana; 
-	color:#ff7e00; 
+
+.agree-title {
+	padding-top: 7px;
+	padding-bottom: 5px;
+	padding-left: 7px;
+	font-weight: bold;
+	font-size: 15px;
 }
-.tip {
-	font-size:11px;
-	color:#0aa4f6; 
-	line-height:20px; 
-	padding-left:5px;
+
+.agree-box {
+	padding-right: 10px;
+	padding-left:10px;
 }
-.register .con_txt { clear:both; }    
-.register { margin-top: 30px; }
+
+.agreements {
+	width:100%;
+	height:95px;
+	font-size:13px;
+	letter-spacing: -0.1em;
+	border: 1px solid #cecece;
+	background-color:#fff;
+	padding-left:14px;
+	padding-top:7px;
+}
+
+.agree-check {
+	padding-top: 7px;
+	padding-right: 10px;
+	padding-bottom: 7px;
+	float: right;
+}
+
+
