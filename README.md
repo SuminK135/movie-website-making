@@ -4,4 +4,4 @@ sort: Wep Application
 
 title: Movie Information Provision
 
-skill: spring, open API
+main skill: open API
