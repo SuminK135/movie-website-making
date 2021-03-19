@@ -1,2 +1,7 @@
-# movie-website-making
-first my own web project with open APIs
+# Outline
+
+sort: Wep Application
+
+title: Movie Information Provision
+
+skill: spring, open API
