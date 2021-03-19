@@ -7,20 +7,20 @@ import com.er.domain.BoardVO;
 public interface BoardMapper {
 
 	//@Select("select * from board1 where seq > 0")
-	public List<BoardVO> getList();
+	List<BoardVO> getList();
 	
 	// Create(Insert)
-	public void insert(BoardVO board);
+	void insert(BoardVO board);
 	
-	public void insertSelectKey(BoardVO board);
+	void insertSelectKey(BoardVO board);
 	
 	// Read
-	public BoardVO read(int seq);
+	BoardVO read(int seq);
 	
 	// Delete
-	public int delete(int seq);
+	int delete(int seq);
 	
 	// Update
-	public int update(BoardVO board);
+	int update(BoardVO board);
 	
 }
