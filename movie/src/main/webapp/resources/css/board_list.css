@@ -58,6 +58,7 @@ aside p {
 .board-list {
 	width: 77.5%;
 	order: 1;
+	margin-bottom: 60px;
 }
 
 #for-order {
@@ -305,6 +306,10 @@ a:active {
 	
 	#for-order {
 		flex-direction: column;
+	}
+	
+	.board-list {
+		margin-bottom: 0px;
 	}
 	
 	.board-list, aside {

@@ -14,7 +14,6 @@ public class BoardVO {
 	private String password;
 	private String content;
 	private int hit;
-	private String wip;
 	private Date wdate;
 	
 }

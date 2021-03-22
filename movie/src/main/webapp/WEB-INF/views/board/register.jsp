@@ -21,7 +21,27 @@
 	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
-	
+		window.onload = function() {
+			document.getElementById('boardsubmit').onclick = function() {
+				if(document.boardfrm.info.checked == false) {
+					alert('동의를 하셔야 합니다.');
+					return false;
+				}
+				if(document.boardfrm.writer.value.trim() == "") {
+					alert('이름을 입력하셔야 합니다.');
+					return false;				
+				}
+				if(document.boardfrm.password.value.trim() == "") {
+					alert('비밀번호를 입력하셔야 합니다.');
+					return false;				
+				}
+				if(document.boardfrm.subject.value.trim() == "") {
+					alert('제목을 입력하셔야 합니다.');
+					return false;				
+				}				
+				document.boardfrm.submit();
+			};
+		};
 	</script>
 </head>
 <body>
@@ -32,7 +52,7 @@
 	<div class="board-register wrapper">
 		<div class="register">
 		
-			<form action="" method="post" name="boardfrm" enctype="multipart/form-data">
+			<form action="/board/register" method="post" name="boardfrm">
 				<div class="contents_sub">
 				<!--table-->
 					<div class="board_write">
@@ -55,13 +75,21 @@
 								<textarea name="content" class="board_editor_area"></textarea>
 							</td>
 						</tr>
+						<!-- 
 						<tr>
 							<th>파일첨부</th>
 							<td colspan="3"><input type="file" name="upload" value="" class="board_write_file" /></td>
 						</tr>
+						 -->
+						 <!-- 
 						<tr>
 							<th>이메일</th>
 							<td colspan="3"><input type="text" name="mail1" value="" class="board_write_input_100"/> @ <input type="text" name="mail2" value="" class="board_write_input_100"/></td>
+						</tr>
+						 -->
+						<tr>
+							<th>이메일</th>
+							<td colspan="3"><input type="text" name="mail" value="" class="board_write_input_100"/></td>
 						</tr>
 						</table>
 						

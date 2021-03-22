@@ -5,34 +5,34 @@
 	
 	<select id="getList" resultType="com.er.domain.BoardVO">
 		<![CDATA[
-			select * from board1 where seq > 0
+			select * from board2 where seq > 0
 		]]>
 	</select>
 	
 	<insert id="insert">
-		insert into board1 (seq, subject, writer, mail, password, content, hit, wip, wdate)
-		values ((select * from (select max(seq)+1 from board1) next), #{subject}, #{writer}, #{mail}, #{password}, #{content}, 0, #{wip}, now() )
+		insert into board2 (seq, subject, writer, mail, password, content, hit, wdate)
+		values ((select * from (select max(seq)+1 from board1) next), #{subject}, #{writer}, #{mail}, #{password}, #{content}, 0, now() )
 	</insert>
 	
 	<insert id="insertSelectKey">
 		<selectKey keyProperty="seq" order="BEFORE" resultType="int">
-			select MAX(seq + 1) from board1
+			select MAX(seq + 1) from board2
 		</selectKey>
 	
-		insert into board1 (seq, subject, writer, mail, password, content, hit, wip, wdate)
-		values (#{seq}, #{subject}, #{writer}, #{mail}, #{password}, #{content}, 0, #{wip}, now() )
+		insert into board2 (seq, subject, writer, mail, password, content, hit, wdate)
+		values (#{seq}, #{subject}, #{writer}, #{mail}, #{password}, #{content}, 0, now() )
 	</insert>
 	
 	<select id="read" resultType="com.er.domain.BoardVO">
-		select * from board1 where seq = #{seq}
+		select * from board2 where seq = #{seq}
 	</select>
 	
 	<delete id="delete">
-		delete from board1 where seq = #{seq}
+		delete from board2 where seq = #{seq}
 	</delete>
 	
 	<update id="update">
-		update board1 set subject=#{subject}, writer=#{writer}, mail=#{mail}, password=#{password}, content=#{content}, wip=#{wip}, wdate=now() where seq=#{seq}
+		update board2 set subject=#{subject}, writer=#{writer}, mail=#{mail}, password=#{password}, content=#{content}, wdate=now() where seq=#{seq}
 	</update>
 	
 </mapper>

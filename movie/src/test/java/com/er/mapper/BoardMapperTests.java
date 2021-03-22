@@ -80,7 +80,6 @@ public class BoardMapperTests {
 		  boardVO.setPassword("123456");
 		  boardVO.setContent("수정된 내용");
 		  boardVO.setWriter("수정된 작성자");
-		  boardVO.setWip("127.0.0.1");
 		  
 		  int count = mapper.update(boardVO);
 		  
