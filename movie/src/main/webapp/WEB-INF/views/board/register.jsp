@@ -24,7 +24,7 @@
 		window.onload = function() {
 			document.getElementById('boardsubmit').onclick = function() {
 				if(document.boardfrm.info.checked == false) {
-					alert('동의를 하셔야 합니다.');
+					alert('개인정보 수집 및 이용에 동의하셔야 합니다.');
 					return false;
 				}
 				if(document.boardfrm.writer.value.trim() == "") {
@@ -99,12 +99,10 @@
 							<td>
 								<div class="agree-title">※ 개인정보 수집 및 이용에 관한 안내</div>
 								<div class="agree-box">
-									<div class="agreements"> 
-										 1. 수집 개인정보 항목 : 회사명, 담당자명, 이메일, 전화번호, 팩스번호, 주소 등 <br />
-										 2. 개인정보의 수집 및 이용목적 : 제휴신청에 따른 본인확인 및 원활한 의사소통 경로 확보 <br />
-										 3. 개인정보의 이용기간 : 모든 검토가 완료된 후 3개월간 이용자의 조회를 위하여 보관하며, 이후 해당정보를 지체 없이 파기합니다. <br />
-										 4. 그 밖의 사항은 개인정보취급방침을 준수합니다.
-									</div>
+									<textarea readonly="readonly" rows="4" >  1.  수집 개인정보 항목 : 회사명, 담당자명, 이메일, 전화번호, 팩스번호, 주소 등
+  2.  개인정보의 수집 및 이용목적 : 제휴신청에 따른 본인확인 및 원활한 의사소통 경로 확보
+  3.  개인정보의 이용기간 : 모든 검토가 완료된 후 3개월간 이용자의 조회를 위하여 보관하며, 이후 해당정보를 지체 없이 파기합니다.
+  4.  그 밖의 사항은 개인정보취급방침을 준수합니다.</textarea>
 								</div>
 								<div class="agree-check">
 									<label><input type="checkbox" name="info" value="1" class=""> 개인정보 수집 및 이용에 대해 동의합니다.</label>
