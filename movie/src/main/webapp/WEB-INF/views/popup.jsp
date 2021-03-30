@@ -12,17 +12,17 @@
 		position: absolute;
 		left: 30px;
 		top: 30px;
-		box-shadow:0 0 8px #000;
+		box-shadow: 0 0 8px #000;
 	}
 	.closeWrap{
 		background-color: #000;
-		color:#fff;
+		color: #fff;
 		text-align: right;
-		padding:5px 10px;
+		padding: 5px 10px;
 	}
 	.closeWrap button{
 		margin-left: 20px;
-		cursor:pointer;
+		cursor: pointer;
 	}
 </style>
 <meta charset="UTF-8">

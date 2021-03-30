@@ -22,7 +22,25 @@
 	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
-	
+		$(document).ready(function() {
+			
+			var result = '<c:out value="${result}"/>';
+			
+			checkModal(result);
+			
+			function checkModal(result) {
+				
+				if(result === '') {
+					return;
+				}
+				
+				if(parseInt(result) > 0) {
+					alert("게시글 " + parseInt(result) + "번이 등록되었습니다.");
+				}
+				
+			}
+			
+		});
 	</script>
 </head>
 <body>
@@ -76,6 +94,24 @@
 						</table>
 					</div>	
 					<!--//게시판-->
+					
+					<!-- MODAL -->
+					<!-- 
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+							</div>
+							<div class="modal-body">처리가 완료되었습니다.</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save changes</button>
+							</div>
+						</div>
+					</div>
+					 -->
+					<!-- /MODAL -->
 					<div class="align_right">
 						<button type="button" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='/board/register'">글쓰기</button>
 					</div>
