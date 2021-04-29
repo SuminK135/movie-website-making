@@ -47,7 +47,6 @@
 
 	<%@include file="../includes/header.jsp" %>
 
-	<!-- <div id="top-img"></div> -->
 	<hr>
 
 	<div class="board wrapper" id="for-order">
@@ -76,18 +75,18 @@
 								<th width="7%">조회</th>
 								<th width="1%">&nbsp;</th>
 							</tr>
-							<c:forEach items="${list}" var="board">
+							<c:forEach items="${list }" var="board">
 								<tr>
 									<td>&nbsp;</td>
-									<td><c:out value="${board.seq}"/></td>
+									<td><c:out value="${board.seq }"/></td>
 									<td class="left">
-										<a href="board_view1.jsp"><img src="" alt="미리보기">&nbsp;<c:out value="${board.subject}"/></a>
+										<a href="/board/get?seq=${board.seq }"><img src="" alt="미리보기">&nbsp;<c:out value="${board.subject }"/></a>
 										&nbsp;
 										<img src="/resources/images/icon_hot.gif" alt="HOT">
 									</td>
-									<td><c:out value="${board.writer}"/></td>
-									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.wdate}" /> </td>
-									<td><c:out value="${board.hit}"/></td>
+									<td><c:out value="${board.writer }"/></td>
+									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.wdate }" /> </td>
+									<td><c:out value="${board.hit }"/></td>
 									<td>&nbsp;</td>
 								</tr>
 							</c:forEach>
@@ -95,7 +94,10 @@
 					</div>	
 					<!--//게시판-->
 					<div class="align_right">
-						<button type="button" class="btn_write btn_txt01" style="cursor: pointer;" onclick="location.href='/board/register'">글쓰기</button>
+						<button type="button" 
+								class="btn_write btn_txt01" 
+								style="cursor: pointer;" 
+								onclick="location.href='/board/register'">글쓰기</button>
 					</div>
 				</div>
 			</div>
