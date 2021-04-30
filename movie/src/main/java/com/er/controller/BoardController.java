@@ -51,8 +51,10 @@ public class BoardController {
 	public void get(@RequestParam("seq") int seq, Model model) {
 		
 		log.info("/get");
-		model.addAttribute("board", service.get(seq));
 		
+		service.viewHitUpadate(seq);
+		
+		model.addAttribute("board", service.get(seq));
 	}
 	
 	@PostMapping("/modify")

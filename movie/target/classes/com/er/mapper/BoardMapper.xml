@@ -18,14 +18,17 @@
 		<selectKey keyProperty="seq" order="BEFORE" resultType="int">
 			select MAX(seq + 1) from board2
 		</selectKey>
-	
-		insert into board2 (seq, subject, writer, mail, password, content, hit, wdate)
-		values (#{seq}, #{subject}, #{writer}, #{mail}, #{password}, #{content}, 0, now() )
+			insert into board2 (seq, subject, writer, mail, password, content, hit, wdate)
+			values (#{seq}, #{subject}, #{writer}, #{mail}, #{password}, #{content}, 0, now() )
 	</insert>
 	
 	<select id="read" resultType="com.er.domain.BoardVO">
 		select * from board2 where seq = #{seq}
 	</select>
+	
+	<update id="viewHitUpadate" parameterType="int">
+		update board2 set hit=hit+1 where seq = #{seq}
+	</update>
 	
 	<delete id="delete">
 		delete from board2 where seq = #{seq}

@@ -17,6 +17,9 @@ public interface BoardMapper {
 	// Read
 	BoardVO read(int seq);
 	
+	// viewHitUpadate
+	int viewHitUpadate(int seq);
+	
 	// Delete
 	int delete(int seq);
 	

@@ -30,6 +30,12 @@ public class BoardServiceImp implements BoardService {
 		// TODO Auto-generated method stub
 		return mapper.read(seq);
 	}
+	
+	@Override
+	public boolean viewHitUpadate(int seq) {
+		// TODO Auto-generated method stub
+		return mapper.viewHitUpadate(seq) == 1;
+	}	
 
 	@Override
 	public boolean modify(BoardVO board) {
@@ -48,6 +54,7 @@ public class BoardServiceImp implements BoardService {
 		// TODO Auto-generated method stub
 		return mapper.getList();
 	}
+
 	
 	
 	

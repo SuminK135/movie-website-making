@@ -6,14 +6,16 @@ import com.er.domain.BoardVO;
 
 public interface BoardService {
 
-	public void register(BoardVO board);
+	void register(BoardVO board);
 	
-	public BoardVO get(int seq);
+	BoardVO get(int seq);
 	
-	public boolean modify(BoardVO board);
+	boolean viewHitUpadate(int seq);
 	
-	public boolean remove(int seq);
+	boolean modify(BoardVO board);
 	
-	public List<BoardVO> getList();
+	boolean remove(int seq);
+	
+	List<BoardVO> getList();
 	
 }
