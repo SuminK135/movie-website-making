@@ -28,9 +28,11 @@
 			
 			checkModal(result);
 			
+			history.replaceState({}, null, null);
+			
 			function checkModal(result) {
 				
-				if(result === '') {
+				if(result === '' || history.state) {
 					return;
 				}
 				
@@ -80,7 +82,7 @@
 									<td>&nbsp;</td>
 									<td><c:out value="${board.seq }"/></td>
 									<td class="left">
-										<a href="/board/get?seq=${board.seq }"><img src="" alt="미리보기">&nbsp;<c:out value="${board.subject }"/></a>
+										<a href="/board/get?seq=${board.seq }"><img src="" alt="미리보기">&nbsp;${board.subject }</a>
 										&nbsp;
 										<img src="/resources/images/icon_hot.gif" alt="HOT">
 									</td>
@@ -94,7 +96,7 @@
 					</div>	
 					<!--//게시판-->
 					<div class="align_right">
-						<button type="button" 
+						<button type="button"
 								class="btn_write btn_txt01" 
 								style="cursor: pointer;" 
 								onclick="location.href='/board/register'">글쓰기</button>

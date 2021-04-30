@@ -10,8 +10,7 @@ public interface BoardMapper {
 	List<BoardVO> getList();
 	
 	// Create(Insert)
-	void insert(BoardVO board);
-	
+	//void insert(BoardVO board);
 	void insertSelectKey(BoardVO board);
 	
 	// Read

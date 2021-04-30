@@ -18,6 +18,12 @@ public class BoardServiceImp implements BoardService {
 	private BoardMapper mapper;
 
 	@Override
+	public List<BoardVO> getList() {
+		// TODO Auto-generated method stub
+		return mapper.getList();
+	}
+	
+	@Override
 	public void register(BoardVO board) {
 		// TODO Auto-generated method stub
 		log.info("register............" + board);
@@ -48,14 +54,6 @@ public class BoardServiceImp implements BoardService {
 		// TODO Auto-generated method stub
 		return mapper.delete(seq) == 1;
 	}
-
-	@Override
-	public List<BoardVO> getList() {
-		// TODO Auto-generated method stub
-		return mapper.getList();
-	}
-
-	
 	
 	
 }

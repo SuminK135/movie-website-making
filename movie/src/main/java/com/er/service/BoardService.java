@@ -6,6 +6,8 @@ import com.er.domain.BoardVO;
 
 public interface BoardService {
 
+	List<BoardVO> getList();
+	
 	void register(BoardVO board);
 	
 	BoardVO get(int seq);
@@ -15,7 +17,5 @@ public interface BoardService {
 	boolean modify(BoardVO board);
 	
 	boolean remove(int seq);
-	
-	List<BoardVO> getList();
 	
 }
