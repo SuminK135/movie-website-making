@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>킹무비 - King Movie | Community</title>
-<meta content="IE=Edge" http-equiv="X-UA-Compatible">
+	<meta charset="UTF-8">
+	<title>킹무비 - King Movie | Community</title>
+	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
 	<!-- viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Font -->
@@ -17,7 +15,6 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/css/board_register.css" />
-	<style type="text/css"></style>
 	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript">

@@ -52,7 +52,16 @@ public class BoardController {
 		
 		log.info("/get");
 		
+		//Hit Count
 		service.viewHitUpadate(seq);
+		
+		model.addAttribute("board", service.get(seq));
+	}
+	
+	@GetMapping("/modify")
+	public void modify(@RequestParam("seq") int seq, Model model) {
+		
+		log.info("/modify");
 		
 		model.addAttribute("board", service.get(seq));
 	}
@@ -62,9 +71,15 @@ public class BoardController {
 		
 		log.info("modify: " + board);
 		
+		System.out.println("확인1: " + board);
+		
 		if(service.modify(board)) {
-			rttr.addFlashAttribute("result", "success");
+			rttr.addFlashAttribute("result", "suceess");
+			System.out.println("확인2");
 		}
+		
+		System.out.println("확인3: " + service.modify(board));
+		
 		return "redirect:/board/list";
 	}
 	

@@ -26,6 +26,8 @@
 			
 			var result = '<c:out value="${result}"/>';
 			
+			console.log('확인5: ' + result);
+			
 			checkModal(result);
 			
 			history.replaceState({}, null, null);

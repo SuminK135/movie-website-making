@@ -35,7 +35,7 @@
 	</delete>
 	
 	<update id="update">
-		update board2 set subject=#{subject}, writer=#{writer}, mail=#{mail}, password=#{password}, content=#{content}, wdate=now() where seq=#{seq}
+		update board2 set subject=#{subject}, writer=#{writer}, mail=#{mail}, content=#{content}, wdate=now() where seq=#{seq} and password=#{password}
 	</update>
 	
 </mapper>

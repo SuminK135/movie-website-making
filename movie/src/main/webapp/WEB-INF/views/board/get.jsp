@@ -77,12 +77,12 @@
 								value="수정" 
 								class="btn_write btn_txt01" 
 								style="cursor: pointer;" 
-								onclick="location.href='modify?seq=${board.seq }&cpage='" />
+								onclick="location.href='modify?seq=${board.seq }'" />
 						<input type="button" 
 								value="삭제" 
 								class="btn_write btn_txt01" 
 								style="cursor: pointer;" 
-								onclick="location.href='delete?seq=${board.seq }&cpage='" />
+								onclick="location.href='delete?seq=${board.seq }'" />
 					</div>	
 				</div>
 				
