@@ -22,7 +22,26 @@
 	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
-	
+		$(document).ready(function() {
+			
+			var result = '<c:out value="${result}"/>';
+			
+			checkModal(result);
+			
+			history.replaceState({}, null, null);
+			
+			function checkModal(result) {
+				
+				if(result == '' || history.state) {
+					return;
+				}
+				
+				if(result == 'success') {
+					alert("게시글 수정이 완료되었습니다.")
+				}
+			}
+			
+		});
 	</script>
 <title>Insert title here</title>
 </head>

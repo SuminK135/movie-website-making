@@ -71,16 +71,16 @@ public class BoardController {
 		
 		log.info("modify: " + board);
 		
-		System.out.println("확인1: " + board);
+		//System.out.println("확인1: " + board);
 		
 		if(service.modify(board)) {
-			rttr.addFlashAttribute("result", "suceess");
-			System.out.println("확인2");
+			rttr.addFlashAttribute("result", "success");
+			//System.out.println("확인2");
 		}
 		
-		System.out.println("확인3: " + service.modify(board));
+		//System.out.println("확인3: " + service.modify(board));
 		
-		return "redirect:/board/list";
+		return "redirect:/board/get?seq=" + board.getSeq();
 	}
 	
 	@PostMapping("/remove")

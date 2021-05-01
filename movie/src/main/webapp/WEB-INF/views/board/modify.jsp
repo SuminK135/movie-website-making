@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -34,6 +35,17 @@
 				alert('비밀번호를 입력하셔야 합니다.');
 				return false;				
 			}
+			if(document.modifyfrm.password.value.trim() == "") {
+				alert('비밀번호를 입력하셔야 합니다.');
+				return false;				
+			}
+			
+			var pw = '<c:out value="${board.password}"/>';
+			
+			if(document.modifyfrm.password.value != pw) {
+				alert('비밀번호가 틀립니다.');
+				return false;				
+			}
 			if(document.modifyfrm.subject.value.trim() == "") {
 				alert('제목을 입력하셔야 합니다.');
 				return false;				
@@ -52,6 +64,7 @@
 		<div class="register">
 		
 			<form action="/board/modify" method="post" name="modifyfrm">
+				<input type="hidden" name="seq" value="${board.seq }">
 				<div class="contents_sub">
 				<!--table-->
 					<div class="board_write">
@@ -124,7 +137,7 @@
 									value="수정" 
 									id="boardsubmit" 
 									class="btn_write btn_txt01" 
-									style="cursor: pointer;" />					
+									style="cursor: pointer;" />			
 						</div>	
 					</div>	
 					<!--/table-->
