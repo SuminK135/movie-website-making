@@ -31,7 +31,7 @@
 	</update>
 	
 	<delete id="delete">
-		delete from board2 where seq = #{seq}
+		delete from board2 where seq = #{seq} and password = #{password}
 	</delete>
 	
 	<update id="update">

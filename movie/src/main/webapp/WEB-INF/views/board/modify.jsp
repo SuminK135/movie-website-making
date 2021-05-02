@@ -23,18 +23,17 @@
 	<script type="text/javascript">
 	window.onload = function() {
 		document.getElementById("boardsubmit").onclick = function() {
+			
 			if(document.modifyfrm.info.checked == false) {
 				alert('개인정보 수집 및 이용에 동의하셔야 합니다.');
 				return false;
 			}
+			
 			if(document.modifyfrm.writer.value.trim() == "") {
 				alert('이름을 입력하셔야 합니다.');
 				return false;				
 			}
-			if(document.modifyfrm.password.value.trim() == "") {
-				alert('비밀번호를 입력하셔야 합니다.');
-				return false;				
-			}
+			
 			if(document.modifyfrm.password.value.trim() == "") {
 				alert('비밀번호를 입력하셔야 합니다.');
 				return false;				
@@ -46,10 +45,12 @@
 				alert('비밀번호가 틀립니다.');
 				return false;				
 			}
+			
 			if(document.modifyfrm.subject.value.trim() == "") {
 				alert('제목을 입력하셔야 합니다.');
 				return false;				
 			}	
+			
 			document.modifyfrm.submit();
 		};
 	};
@@ -64,7 +65,9 @@
 		<div class="register">
 		
 			<form action="/board/modify" method="post" name="modifyfrm">
-				<input type="hidden" name="seq" value="${board.seq }">
+			
+				<input type="hidden" name="seq" value="${board.seq }"> <!-- Hidden -->
+				
 				<div class="contents_sub">
 				<!--table-->
 					<div class="board_write">

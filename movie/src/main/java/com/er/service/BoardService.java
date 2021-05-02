@@ -16,6 +16,6 @@ public interface BoardService {
 	
 	boolean modify(BoardVO board);
 	
-	boolean remove(int seq);
+	boolean remove(BoardVO board);
 	
 }

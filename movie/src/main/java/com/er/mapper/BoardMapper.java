@@ -19,10 +19,10 @@ public interface BoardMapper {
 	// viewHitUpadate
 	int viewHitUpadate(int seq);
 	
-	// Delete
-	int delete(int seq);
-	
 	// Update
 	int update(BoardVO board);
+
+	// Delete
+	int delete(BoardVO board);
 	
 }

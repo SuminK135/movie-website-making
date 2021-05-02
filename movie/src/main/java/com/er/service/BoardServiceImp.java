@@ -52,9 +52,11 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public boolean remove(int seq) {
+	public boolean remove(BoardVO board) {
 		// TODO Auto-generated method stub
-		return mapper.delete(seq) == 1;
+		log.info("delete............" + board);
+		
+		return mapper.delete(board) == 1;
 	}
 	
 	

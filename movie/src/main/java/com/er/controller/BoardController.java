@@ -69,7 +69,7 @@ public class BoardController {
 	@PostMapping("/modify")
 	public String modify(BoardVO board, RedirectAttributes rttr) {
 		
-		log.info("modify: " + board);
+		log.info("modify..... " + board);
 		
 		//System.out.println("확인1: " + board);
 		
@@ -83,12 +83,20 @@ public class BoardController {
 		return "redirect:/board/get?seq=" + board.getSeq();
 	}
 	
+	@GetMapping("/remove")
+	public void remove(@RequestParam("seq") int seq, Model model) {
+		
+		log.info("/remove");
+		
+		model.addAttribute("board", service.get(seq));
+	}
+	
 	@PostMapping("/remove")
-	public String remove(@RequestParam("seq") int seq, RedirectAttributes rttr) {
+	public String remove(BoardVO board, RedirectAttributes rttr) {
 		
-		log.info("remove..." + seq);
+		log.info("remove....." + board);
 		
-		if(service.remove(seq)) {
+		if(service.remove(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
 		return "redirect:/board/list";

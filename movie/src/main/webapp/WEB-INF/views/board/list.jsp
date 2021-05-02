@@ -26,11 +26,11 @@
 			
 			var result = '<c:out value="${result}"/>';
 			
-			checkModal(result);
+			checkAlert(result);
 			
 			history.replaceState({}, null, null);
 			
-			function checkModal(result) {
+			function checkAlert(result) {
 				
 				if(result === '' || history.state) {
 					return;
@@ -41,7 +41,7 @@
 				}
 				
 				if(result == 'success') {
-					alert("게시글 수정이 완료되었습니다.")
+					alert("게시글이 삭제되었습니다.")
 				}
 				
 			}

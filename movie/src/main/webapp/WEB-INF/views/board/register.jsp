@@ -20,22 +20,27 @@
 	<script type="text/javascript">
 		window.onload = function() {
 			document.getElementById('boardsubmit').onclick = function() {
+				
 				if(document.boardfrm.info.checked == false) {
 					alert('개인정보 수집 및 이용에 동의하셔야 합니다.');
 					return false;
 				}
+				
 				if(document.boardfrm.writer.value.trim() == "") {
 					alert('이름을 입력하셔야 합니다.');
 					return false;				
 				}
+				
 				if(document.boardfrm.password.value.trim() == "") {
 					alert('비밀번호를 입력하셔야 합니다.');
 					return false;				
 				}
+				
 				if(document.boardfrm.subject.value.trim() == "") {
 					alert('제목을 입력하셔야 합니다.');
 					return false;				
-				}				
+				}	
+				
 				document.boardfrm.submit();
 			};
 		};

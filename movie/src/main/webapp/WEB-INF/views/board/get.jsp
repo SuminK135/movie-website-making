@@ -26,11 +26,11 @@
 			
 			var result = '<c:out value="${result}"/>';
 			
-			checkModal(result);
+			checkAlert(result);
 			
 			history.replaceState({}, null, null);
 			
-			function checkModal(result) {
+			function checkAlert(result) {
 				
 				if(result == '' || history.state) {
 					return;
@@ -40,7 +40,7 @@
 					alert("게시글 수정이 완료되었습니다.")
 				}
 			}
-			
+
 		});
 	</script>
 <title>Insert title here</title>
@@ -98,16 +98,18 @@
 								style="cursor: pointer;" 
 								onclick="location.href='modify?seq=${board.seq }'" />
 						<input type="button" 
-								value="삭제" 
+								value="삭제"
+								id="delete_modal"
 								class="btn_write btn_txt01" 
 								style="cursor: pointer;" 
-								onclick="location.href='delete?seq=${board.seq }'" />
+								onclick="location.href='remove?seq=${board.seq }'" />
 					</div>	
 				</div>
 				
 			</div>
 			
 		</div>
+		
 	</div>
 	
 	<%@include file="../includes/footer.jsp" %>
