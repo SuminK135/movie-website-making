@@ -3,11 +3,14 @@ package com.er.mapper;
 import java.util.List;
 
 import com.er.domain.BoardVO;
+import com.er.domain.Paging;
 
 public interface BoardMapper {
 
 	//@Select("select * from board1 where seq > 0")
-	List<BoardVO> getList();
+	//List<BoardVO> getList();
+	
+	List<BoardVO> getListForPaging(Paging pg);
 	
 	// Create(Insert)
 	//void insert(BoardVO board);

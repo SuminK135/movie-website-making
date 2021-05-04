@@ -3,10 +3,32 @@
 
 <mapper namespace="com.er.mapper.BoardMapper">
 	
+	<!-- 
 	<select id="getList" resultType="com.er.domain.BoardVO">
 		<![CDATA[
 			select * from board2 where seq > 0
 		]]>
+	</select>
+	 -->
+	 
+	<select id="getListForPaging" resultType="com.er.domain.BoardVO">
+		
+		<![CDATA[
+		select
+			seq, subject, writer, hit, wdate
+		from board2
+		where seq > 0
+		order by seq desc
+		limit #{skip}, #{amount}
+		]]>
+		
+		<!-- select * from (
+			select seq, subject, writer, hit, wdate 
+			from board2
+			order by seq desc
+			) as pg
+		limit #{skip}, #{amount}  -->
+		
 	</select>
 	
 	<insert id="insert">

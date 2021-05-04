@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.er.domain.BoardVO;
+import com.er.domain.Paging;
 import com.er.service.BoardService;
 
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ import lombok.extern.log4j.Log4j;
 public class BoardController {
 
 	private BoardService service;
-	
+/*	
 	@GetMapping("/list")
 	public void list(Model model) {
 		
@@ -29,6 +30,14 @@ public class BoardController {
 		model.addAttribute("list", service.getList());
 		
 	}
+*/
+	@GetMapping("/list")
+	public void list(Paging pg, Model model) {
+		log.info("list: " + pg);
+		
+		model.addAttribute("list", service.getList(pg));
+	}
+	
 	
 	@GetMapping("/register")
 	public void register() {

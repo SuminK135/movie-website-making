@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.er.domain.BoardVO;
+import com.er.domain.Paging;
 import com.er.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -16,11 +17,19 @@ import lombok.extern.log4j.Log4j;
 public class BoardServiceImp implements BoardService {
 	
 	private BoardMapper mapper;
-
+/*
 	@Override
 	public List<BoardVO> getList() {
 		// TODO Auto-generated method stub
 		return mapper.getList();
+	}
+*/	
+	@Override
+	public List<BoardVO> getList(Paging pg) {
+		// TODO Auto-generated method stub
+		log.info("get List for Paging: " + pg);
+		
+		return mapper.getListForPaging(pg);
 	}
 	
 	@Override
@@ -58,6 +67,5 @@ public class BoardServiceImp implements BoardService {
 		
 		return mapper.delete(board) == 1;
 	}
-	
 	
 }
