@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.er.domain.BoardVO;
+import com.er.domain.PageDTO;
 import com.er.domain.Paging;
 import com.er.service.BoardService;
 
@@ -33,9 +34,14 @@ public class BoardController {
 */
 	@GetMapping("/list")
 	public void list(Paging pg, Model model) {
-		log.info("list: " + pg);
+		log.info("list.....: " + pg);
+		
+		int total = service.getBoardTotalCount(pg);
+		
+		log.info("총 게시글 수: " + total);
 		
 		model.addAttribute("list", service.getList(pg));
+		model.addAttribute("pageMaker", new PageDTO(pg, total));
 	}
 	
 	

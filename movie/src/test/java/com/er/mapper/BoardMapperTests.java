@@ -34,7 +34,7 @@ public class BoardMapperTests {
 		
 		Paging pg = new Paging();
 		
-		pg.setPageNum(1);
+		pg.setPageNum(3);
 		pg.setAmount(10);
 		
 		List<BoardVO> list = mapper.getListForPaging(pg);

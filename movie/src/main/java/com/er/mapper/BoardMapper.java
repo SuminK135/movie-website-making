@@ -12,6 +12,8 @@ public interface BoardMapper {
 	
 	List<BoardVO> getListForPaging(Paging pg);
 	
+	int getBoardTotalCount(Paging pg);
+	
 	// Create(Insert)
 	//void insert(BoardVO board);
 	void insertSelectKey(BoardVO board);

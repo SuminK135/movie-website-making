@@ -46,6 +46,23 @@
 				
 			}
 			
+			//Paging
+			var pagingForm = $("#pagingForm");
+			
+			console.log(pagingForm);
+			
+			$(".pg-button a").on("click", function(e) {
+				
+				e.preventDefault();
+				
+				console.log('click');
+				
+				pagingForm.find("input[name='pageNum']").val($(this).attr("href"));
+				
+				pagingForm.submit();
+				
+			});
+			
 		});
 	</script>
 </head>
@@ -66,7 +83,7 @@
 			<div class="con_txt">
 				<div class="contents_sub">
 					<div class="board_top">
-						<div class="bold">총 <span class="txt_orange">1</span>건</div>
+						<div class="bold">총 <span class="txt_orange">${pageMaker.total }</span>건</div>
 					</div>
 					<!--게시판-->
 					<div class="board">
@@ -97,14 +114,60 @@
 								</tr>
 							</c:forEach>
 						</table>
+						
+						<!-- 페이징 -->
+						<form id="pagingForm" action="/board/list" method="get">
+							<input type="hidden" name="pageNum" value="${pageMaker.pg.pageNum }">
+							<input type="hidden" name="amount" value="${pageMaker.pg.amount }">
+						</form>
+				
+						<div class="pages">
+							<ul class="pagination">
+
+								<c:if test="${pageMaker.prev }">
+									<li class="pg-button prev"><a href="${pageMaker.startPage - 1 }">&lt;&lt;</a></li>
+								</c:if>
+								
+								<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+									<li class="pg-button ${pageMaker.pg.pageNum == num ? "present" : "" }">
+										<a href="${num }">${num }</a>
+									</li>
+								</c:forEach>
+								
+								<c:if test="${pageMaker.next }">
+									<li class="pg-button next">
+										<a href="${pageMaker.endPage + 1 }">&gt;&gt;</a>
+									</li>
+								</c:if>
+								
+								<li>
+									<div class="align_right">
+										<button type="button"
+										class="btn_write btn_txt01" 
+										style="cursor: pointer;" 
+										onclick="location.href='/board/register'">글쓰기</button>
+									</div>
+								</li>
+	
+							</ul>
+							
+							<!-- <ul>
+								<li>
+									<div class="align_right">
+										<button type="button"
+										class="btn_write btn_txt01" 
+										style="cursor: pointer;" 
+										onclick="location.href='/board/register'">글쓰기</button>
+									</div>
+								</li>
+							</ul> -->
+							
+						</div>
+						<!-- //페이징 -->
+						
 					</div>	
 					<!--//게시판-->
-					<div class="align_right">
-						<button type="button"
-								class="btn_write btn_txt01" 
-								style="cursor: pointer;" 
-								onclick="location.href='/board/register'">글쓰기</button>
-					</div>
+					
 				</div>
 			</div>
 		<!--//하단 디자인 -->

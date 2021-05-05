@@ -229,7 +229,27 @@ a:active {
 }
 
 /* Paging */
-.paginate_regular {
+.pages ul {
+	display: flex;
+	justify-content: center;
+	font-size: 13px;
+}
+
+.pages ul > li {
+	margin: 5px 10px 0px;
+}
+
+.present > a {
+	font-weight: bold;
+	color: #f60;
+	text-decoration: underline;
+}
+
+/* .pages ul > li {
+	float: left;
+} */
+
+/* .paginate_regular {
 	padding: 10px 0;
 	text-align: center;
 	line-height: normal;
@@ -258,7 +278,7 @@ a:active {
 .paginate_regular .direction:hover, .paginate_regular .direction:active, .paginate_regular .direction:focus {
 	background-color: #fff;
 	color: #333;
-}
+} */
 
 /* Button */
 .btn_write { 
@@ -284,7 +304,7 @@ a:active {
 /* Align */
 .align_right {
 	text-align: right; 
-	margin: 10px 0; 
+	/* margin: 10px 0;  */
 	overflow: hidden;
 }
 .align_right button { float:right; }

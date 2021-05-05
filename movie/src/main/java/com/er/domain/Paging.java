@@ -7,8 +7,11 @@ import lombok.ToString;
 @ToString
 public class Paging {
 
+	// 현재 페이지
 	private int pageNum;
+	// 페이지당 게시글 수
 	private int amount;
+	// 페이지 넘기기
 	private int skip;
 	
 	public Paging() {

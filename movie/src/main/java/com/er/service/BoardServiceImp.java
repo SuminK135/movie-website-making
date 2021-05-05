@@ -33,6 +33,14 @@ public class BoardServiceImp implements BoardService {
 	}
 	
 	@Override
+	public int getBoardTotalCount(Paging pg) {
+		// TODO Auto-generated method stub
+		log.info("get total count");
+		
+		return mapper.getBoardTotalCount(pg);
+	}
+	
+	@Override
 	public void register(BoardVO board) {
 		// TODO Auto-generated method stub
 		log.info("register............" + board);
