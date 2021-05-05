@@ -104,8 +104,9 @@
 									<td><c:out value="${board.seq }"/></td>
 									<td class="left">
 										<a href="/board/get?seq=${board.seq }"><img src="" alt="미리보기">&nbsp;${board.subject }</a>
-										&nbsp;
-										<img src="/resources/images/icon_hot.gif" alt="HOT">
+										<c:if test="${board.wgap eq 1 }">
+											&nbsp;<img src="/resources/images/icon_hot.gif" alt="HOT">
+										</c:if>
 									</td>
 									<td><c:out value="${board.writer }"/></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.wdate }" /> </td>

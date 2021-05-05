@@ -15,5 +15,6 @@ public class BoardVO {
 	private String content;
 	private int hit;
 	private Date wdate;
+	private int wgap;
 	
 }

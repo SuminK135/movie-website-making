@@ -15,7 +15,7 @@
 		
 		<![CDATA[
 		select
-			seq, subject, writer, hit, wdate
+			seq, subject, writer, hit, wdate, datediff(now(), wdate) wgap
 		from board2
 		where seq > 0
 		order by seq desc
