@@ -3,6 +3,7 @@ package com.er.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,7 +64,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/get")
-	public void get(@RequestParam("seq") int seq, Model model) {
+	public void get(@RequestParam("seq") int seq, @ModelAttribute("pg") Paging pg, Model model) {
 		
 		log.info("/get");
 		
@@ -74,7 +75,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/modify")
-	public void modify(@RequestParam("seq") int seq, Model model) {
+	public void modify(@RequestParam("seq") int seq, @ModelAttribute("pg") Paging pg,  Model model) {
 		
 		log.info("/modify");
 		
@@ -82,24 +83,25 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO board, RedirectAttributes rttr) {
+	public String modify(BoardVO board,  @ModelAttribute("pg") Paging pg, RedirectAttributes rttr) {
 		
 		log.info("modify..... " + board);
 		
 		//System.out.println("확인1: " + board);
-		
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
 			//System.out.println("확인2");
 		}
-		
 		//System.out.println("확인3: " + service.modify(board));
+		
+		rttr.addAttribute("pageNum", pg.getPageNum());
+		rttr.addAttribute("amount", pg.getAmount());
 		
 		return "redirect:/board/get?seq=" + board.getSeq();
 	}
 	
 	@GetMapping("/remove")
-	public void remove(@RequestParam("seq") int seq, Model model) {
+	public void remove(@RequestParam("seq") int seq, @ModelAttribute("pg") Paging pg, Model model) {
 		
 		log.info("/remove");
 		
@@ -107,13 +109,17 @@ public class BoardController {
 	}
 	
 	@PostMapping("/remove")
-	public String remove(BoardVO board, RedirectAttributes rttr) {
+	public String remove(BoardVO board, @ModelAttribute("pg") Paging pg, RedirectAttributes rttr) {
 		
 		log.info("remove....." + board);
 		
 		if(service.remove(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
+		rttr.addAttribute("pageNum", pg.getPageNum());
+		rttr.addAttribute("amount", pg.getAmount());
+		
 		return "redirect:/board/list";
 		
 	}

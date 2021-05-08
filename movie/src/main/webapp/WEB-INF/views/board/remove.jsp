@@ -53,7 +53,9 @@
 			<form action="/board/remove" method="post" name="removefrm">
 			
 			<input type="hidden" name="seq" value="${board.seq }">
-			
+			<input type="hidden" name="pageNum" value="${pg.pageNum }">
+			<input type="hidden" name="amount" value="${pg.amount }">
+				
 				<div class="contents_sub">
 				<!--table-->
 					<div class="board_write">

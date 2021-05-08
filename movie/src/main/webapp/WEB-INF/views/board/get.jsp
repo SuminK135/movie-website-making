@@ -40,6 +40,37 @@
 					alert("게시글 수정이 완료되었습니다.")
 				}
 			}
+			
+			var moveListPaging = $("#moveListPaging");
+			
+			$(".btn_list").on("click", function(e) {
+				
+				e.preventDefault();
+				
+				moveListPaging.submit();
+				
+			});
+			
+			var modifyPaging = $("#modifyPaging");
+			
+			$(".modify").on("click", function(e) {
+				
+				e.preventDefault();
+				
+				modifyPaging.submit();
+				
+			});
+			
+			var removePaging = $("#removePaging");
+			
+			$(".remove").on("click", function(e) {
+				
+				e.preventDefault();
+				
+				removePaging.submit();
+				
+			});
+			
 
 		});
 	</script>
@@ -52,7 +83,6 @@
 	
 	<div class="board-get wrapper">
 		<div class="get">
-			
 			<div class="contents_sub">
 				<div class="board_get">
 					<table>
@@ -84,25 +114,43 @@
 				</div>
 				
 				<div class="btn_area">
-					<div class="align_left">			
+					<div class="align_left">
+					
+					<form id="moveListPaging" action="/board/list" method="get">
+						<input type="hidden" name="pageNum" value="${pg.pageNum }">
+						<input type="hidden" name="amount" value="${pg.amount }">
+					</form>
+					
+					<form id="modifyPaging" action="/board/modify" method="get">
+						<input type="hidden" name="seq" value="${board.seq }">
+						<input type="hidden" name="pageNum" value="${pg.pageNum }">
+						<input type="hidden" name="amount" value="${pg.amount }">
+					</form>
+					
+					<form id="removePaging" action="/board/remove" method="get">
+						<input type="hidden" name="seq" value="${board.seq }">
+						<input type="hidden" name="pageNum" value="${pg.pageNum }">
+						<input type="hidden" name="amount" value="${pg.amount }">
+					</form>
+								
 						<input type="button" 
 								value="목록" 
 								class="btn_list btn_txt02" 
 								style="cursor: pointer;" 
-								onclick="location.href='list?cpage='" />
+								onclick="location.href='list'" />
 					</div>
 					<div class="align_right">
 						<input type="button" 
 								value="수정" 
-								class="btn_write btn_txt01" 
+								class="btn_write btn_txt01 modify" 
 								style="cursor: pointer;" 
-								onclick="location.href='modify?seq=${board.seq }'" />
+								onclick="location.href='modify'" />
 						<input type="button" 
 								value="삭제"
 								id="delete_modal"
-								class="btn_write btn_txt01" 
+								class="btn_write btn_txt01 remove" 
 								style="cursor: pointer;" 
-								onclick="location.href='remove?seq=${board.seq }'" />
+								onclick="location.href='remove'" />
 					</div>	
 				</div>
 				

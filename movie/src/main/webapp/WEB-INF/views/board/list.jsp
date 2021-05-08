@@ -63,6 +63,16 @@
 				
 			});
 			
+			$(".move").on("click", function(e) {
+				
+				e.preventDefault();
+				pagingForm.append("<input type='hidden' name='seq' value='"+$(this).attr("href")+"'>");
+				pagingForm.attr("action", "/board/get");
+				pagingForm.submit();
+				
+			});
+			
+			
 		});
 	</script>
 </head>
@@ -103,8 +113,8 @@
 									<td>&nbsp;</td>
 									<td><c:out value="${board.seq }"/></td>
 									<td class="left">
-										<a href="/board/get?seq=${board.seq }"><img src="" alt="미리보기">&nbsp;${board.subject }</a>
-										<c:if test="${board.wgap eq 1 }">
+										<a class="move" href="${board.seq }"><img src="" alt="미리보기">&nbsp;${board.subject }</a>
+										<c:if test="${board.wgap eq 0 }">
 											&nbsp;<img src="/resources/images/icon_hot.gif" alt="HOT">
 										</c:if>
 									</td>

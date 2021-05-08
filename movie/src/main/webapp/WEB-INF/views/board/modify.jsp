@@ -54,6 +54,21 @@
 			document.modifyfrm.submit();
 		};
 	};
+	
+	$(document).ready(function() {
+		
+		var moveListPaging = $("#moveListPaging");
+		
+		$(".btn_list").on("click", function(e) {
+			
+			e.preventDefault();
+			
+			moveListPaging.submit();
+			
+		});
+		
+		
+	});
 	</script>
 </head>
 <body>
@@ -67,6 +82,8 @@
 			<form action="/board/modify" method="post" name="modifyfrm">
 			
 				<input type="hidden" name="seq" value="${board.seq }"> <!-- Hidden -->
+				<input type="hidden" name="pageNum" value="${pg.pageNum }">
+				<input type="hidden" name="amount" value="${pg.amount }">
 				
 				<div class="contents_sub">
 				<!--table-->
@@ -133,7 +150,7 @@
 									value="목록" 
 									class="btn_list btn_txt02" 
 									style="cursor: pointer;" 
-									onclick="location.href='list?cpage='" />
+									onclick="location.href='list'" />
 						</div>
 						<div class="align_right">			
 							<input type="button" 
@@ -146,11 +163,16 @@
 					<!--/table-->
 				</div>
 			</form>
+			
+			<form id="moveListPaging" action="/board/list" method="get">
+				<input type="hidden" name="pageNum" value="${pg.pageNum }">
+				<input type="hidden" name="amount" value="${pg.amount }">
+			</form>
+			
 		</div>
 	</div>
 	
 	<%@include file="../includes/footer.jsp" %>
 	
-
 </body>
 </html>
