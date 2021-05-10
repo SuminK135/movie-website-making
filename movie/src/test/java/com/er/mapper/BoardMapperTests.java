@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.er.domain.BoardVO;
 import com.er.domain.Paging;
+import com.er.domain.Searching;
 
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
@@ -29,6 +30,7 @@ public class BoardMapperTests {
 	  }
 	 */
 	
+	/*
 	@Test
 	public void testPaging() {
 		
@@ -40,6 +42,20 @@ public class BoardMapperTests {
 		List<BoardVO> list = mapper.getListForPaging(pg);
 		
 		list.forEach(Board -> log.info(Board.getSeq()));
+	}
+	*/
+	
+	@Test
+	public void testSearch() {
+		
+		Searching ch = new Searching();
+		ch.setKeyword("새로");
+		ch.setType("SC");
+		
+		List<BoardVO> list = mapper.getListForPaging(ch);
+		
+		list.forEach(board -> log.info(board));
+		
 	}
 	
 	/*

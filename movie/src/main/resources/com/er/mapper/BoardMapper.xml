@@ -17,7 +17,36 @@
 		select
 			seq, subject, writer, hit, wdate, datediff(now(), wdate) wgap
 		from board2
-		where seq > 0
+		where ]]>
+		
+		<!-- 
+			trim : 하위에서 만들어지는 SQL문을 조사하여 앞 쪽에 추가적인 SQL을 넣을 수 있다.
+			prefix : 실행될 쿼리의 <trim> 문 안에 쿼리 가장 앞에 붙여준다.
+			prefixOverrides : 실행될 쿼리의 <trim> 문 안에 쿼리 가장 앞에 해당하는 문자들이 있으면 자동으로 지워준다.
+			suffix : 실행 될 쿼리의 <trim> 문 안에 쿼리 가장 뒤에 붙여준다.
+			suffixOverrides : 실행될 쿼리의 <trim> 문 안에 쿼리 가장 뒤에 해당하는 문자들이 있으면 자동으로 지워준다.
+		 -->
+		
+		<trim prefix="(" suffix=") AND" prefixOverrides="OR">
+			<foreach item="type" collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							subject like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%' || #{keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+		
+		<![CDATA[
+		seq > 0
 		order by seq desc
 		limit #{skip}, #{amount}
 		]]>
