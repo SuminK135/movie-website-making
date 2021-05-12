@@ -97,6 +97,8 @@
 			$(".search").toggle("fade");
 		});
 		
+		$(".search-type").selectmenu();
+		
 	});
 	
 	

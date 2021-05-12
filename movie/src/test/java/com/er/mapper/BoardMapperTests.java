@@ -48,11 +48,11 @@ public class BoardMapperTests {
 	@Test
 	public void testSearch() {
 		
-		Searching ch = new Searching();
-		ch.setKeyword("새로");
-		ch.setType("SC");
+		Paging pg = new Paging();
+		pg.setKeyword("새로");
+		pg.setType("SC");
 		
-		List<BoardVO> list = mapper.getListForPaging(ch);
+		List<BoardVO> list = mapper.getListForPaging(pg);
 		
 		list.forEach(board -> log.info(board));
 		

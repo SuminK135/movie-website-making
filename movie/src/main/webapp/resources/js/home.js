@@ -10,8 +10,14 @@ $(function() {
 		//adaptiveHeight: 350
 		//slideMargin: 80
 		//slideHeight: 250
-	});	
+	});
 	
+	
+	if($.cookie("popup") == "none") {
+		return;
+	} else {
+		window.open("/popup", "popup", "width=300, height=377, left=300, top=50, scrollbars=no");
+	}
 	
 
 });

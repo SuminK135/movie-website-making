@@ -1,38 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>킹무비 - King Movie | Home</title>
-	<meta content="IE=Edge" http-equiv="X-UA-Compatible">
-	<meta name="description" content="King Movie, 영화 정보 공유 커뮤니티">
-	<meta name="keywords" content="Movie, 영화, 영화 사이트, King Movie, 영화 정보 공유 커뮤니티">	
-	<meta property="og:type" content="website">
-	<meta property="og:title" content="King Movie">
-	<meta property="og:description" content="King Movie, 영화 정보 공유 커뮤니티">
-	<meta property="og:url" content="">
-	<meta property="og:image" content="">
-	<link rel="canonical" href="">
 	<!-- viewport -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@300&family=Roboto:wght@300&display=swap" rel="stylesheet">
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="/resources/images/crown.png">
 	<!-- CSS -->
-	<!-- <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css"> -->
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/css/style.css" />
-	<style type="text/css">
-	
-	</style>
+	<!-- JS -->
 	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/jquery.cookie.min.js"></script>	
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/resources/js/jquery.bxslider.js"></script>
 	<script type="text/javascript" src="/resources/js/common.js"></script>
-	<script type="text/javascript">
-	
-	</script>
+	<script type="text/javascript" src="/resources/js/home.js"></script>
 </head>
 <body>
 
@@ -84,7 +71,7 @@
 						<li><a href="#">영화정보</a></li>
 						<li><a href="/board/list">커뮤니티</a></li>
 						<li><a href="#">ABOUT</a></li>
-						<li><a href="#"><img class="search-logo" alt="검색" src="/resources/images/search.png"></a></li>
+						<li><img class="search-logo" alt="검색" src="/resources/images/search.png" style="cursor: pointer"></li>
 					</ul>
 					
 					<div id="slide-menu" class="slide-menu">
@@ -119,8 +106,21 @@
 		
 			<div class="search-wrap">
 				<div class="search">
-					<input type="text">
+				<form id="searchForm" action="/board/list" method="get">
+					<select name="type" class="search-type">
+						<option value="">--</option>
+						<option value="T">제목</option>
+						<option value="C">내용</option>
+						<option value="W">작성자</option>
+						<option value="TC">제목 or 내용</option>
+						<option value="TW">제목 or 작성자</option>
+						<option value="TWC">제목 or 내용 or 작성자</option>
+					</select>
+					<input type="text" class="search-input" name="keyword" />
+					<input type="hidden" name="pageNum" value="${pageMaker.pg.pageNum }">
+					<input type="hidden" name="amount" value="${pageMaker.pg.amount }">
 					<button class="search-btn">검색</button>
+				</form>
 				</div>
 			</div>
 		
