@@ -1,5 +1,7 @@
 package com.er.domain;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import lombok.Getter;
 import lombok.ToString;
 
@@ -56,7 +58,6 @@ public class Paging {
 		
 	}
 	
-	
 	public void setType(String type) {
 		
 		this.type = type;
@@ -74,6 +75,20 @@ public class Paging {
 		 
 		 return type == null ? new String[] {} : type.split("");
 		
-	 }
+	}
+	
+	// UriComponentsBuilder (1)
+	public String getListLink() {
+		
+		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
+			.queryParam("pageNum", this.getPageNum())
+			.queryParam("amount", this.getAmount())
+			.queryParam("type", this.getType())
+			.queryParam("keyword", this.getKeyword());
+		
+		return builder.toUriString();
+		
+	}
+	
 	
 }

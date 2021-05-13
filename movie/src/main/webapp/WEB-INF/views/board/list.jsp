@@ -94,21 +94,6 @@
 				<div class="contents_sub">
 					<div class="board_top">
 						<div class="bold">총 <span class="txt_orange">${pageMaker.total }</span>건</div>
-						<%-- <div>
-							<select name="type">
-								<option value="">--</option>
-								<option value="T">제목</option>
-								<option value="C">내용</option>
-								<option value="W">작성자</option>
-								<option value="TC">제목 or 내용</option>
-								<option value="TW">제목 or 작성자</option>
-								<option value="TWC">제목 or 내용 or 작성자</option>
-							</select>
-							<input type="text" name="keyword" />
-							<input type="hidden" name="pageNum" value="${pageMaker.pg.pageNum }">
-							<input type="hidden" name="amount" value="${pageMaker.pg.amount }">
-							<button class="">Search</button>
-						</div> --%>
 					</div>
 					<!--게시판-->
 					<div class="board">
@@ -145,6 +130,8 @@
 						<form id="pagingForm" action="/board/list" method="get">
 							<input type="hidden" name="pageNum" value="${pageMaker.pg.pageNum }">
 							<input type="hidden" name="amount" value="${pageMaker.pg.amount }">
+							<input type="hidden" name="type" value="${pageMaker.pg.type }">
+							<input type="hidden" name="keyword" value="${pageMaker.pg.keyword }">
 						</form>
 				
 						<div class="pages">

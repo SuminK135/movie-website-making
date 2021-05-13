@@ -134,15 +134,15 @@
 				<div class="search">
 				<form id="searchForm" action="/board/list" method="get">
 					<select name="type" class="search-type">
-						<option value="">--</option>
-						<option value="T">제목</option>
-						<option value="C">내용</option>
-						<option value="W">작성자</option>
-						<option value="TC">제목 or 내용</option>
-						<option value="TW">제목 or 작성자</option>
-						<option value="TWC">제목 or 내용 or 작성자</option>
+						<option value="" ${pageMaker.pg.type == null ? 'selected' : '' }>--</option>
+						<option value="T" ${pageMaker.pg.type eq 'T' ? 'selected' : '' }>제목</option>
+						<option value="C" ${pageMaker.pg.type eq 'C' ? 'selected' : '' }>내용</option>
+						<option value="W" ${pageMaker.pg.type eq 'W' ? 'selected' : '' }>작성자</option>
+						<option value="TC" ${pageMaker.pg.type eq 'TC' ? 'selected' : '' }>제목 or 내용</option>
+						<option value="TW" ${pageMaker.pg.type eq 'TW' ? 'selected' : '' }>제목 or 작성자</option>
+						<option value="TWC" ${pageMaker.pg.type eq 'TWC' ? 'selected' : '' }>제목 or 내용 or 작성자</option>
 					</select>
-					<input type="text" class="search-input" name="keyword" />
+					<input class="search-input" type="text" name="keyword" value="${pageMaker.pg.keyword }" />
 					<input type="hidden" name="pageNum" value="${pageMaker.pg.pageNum }">
 					<input type="hidden" name="amount" value="${pageMaker.pg.amount }">
 					<button class="search-btn">검색</button>

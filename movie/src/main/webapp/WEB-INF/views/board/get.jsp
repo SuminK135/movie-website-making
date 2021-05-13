@@ -70,7 +70,6 @@
 				removePaging.submit();
 				
 			});
-			
 
 		});
 	</script>
@@ -119,18 +118,24 @@
 					<form id="moveListPaging" action="/board/list" method="get">
 						<input type="hidden" name="pageNum" value="${pg.pageNum }">
 						<input type="hidden" name="amount" value="${pg.amount }">
+						<input type="hidden" name="type" value="${pg.type }">
+						<input type="hidden" name="keyword" value="${pg.keyword }">
 					</form>
 					
 					<form id="modifyPaging" action="/board/modify" method="get">
 						<input type="hidden" name="seq" value="${board.seq }">
 						<input type="hidden" name="pageNum" value="${pg.pageNum }">
 						<input type="hidden" name="amount" value="${pg.amount }">
+						<input type="hidden" name="type" value="${pg.type }">
+						<input type="hidden" name="keyword" value="${pg.keyword }">
 					</form>
 					
 					<form id="removePaging" action="/board/remove" method="get">
 						<input type="hidden" name="seq" value="${board.seq }">
 						<input type="hidden" name="pageNum" value="${pg.pageNum }">
 						<input type="hidden" name="amount" value="${pg.amount }">
+						<input type="hidden" name="type" value="${pg.type }">
+						<input type="hidden" name="keyword" value="${pg.keyword }">
 					</form>
 								
 						<input type="button" 

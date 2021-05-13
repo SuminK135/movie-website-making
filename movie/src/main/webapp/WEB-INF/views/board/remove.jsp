@@ -55,6 +55,8 @@
 			<input type="hidden" name="seq" value="${board.seq }">
 			<input type="hidden" name="pageNum" value="${pg.pageNum }">
 			<input type="hidden" name="amount" value="${pg.amount }">
+			<input type="hidden" name="type" value="${pg.type }">
+			<input type="hidden" name="keyword" value="${pg.keyword }">
 				
 				<div class="contents_sub">
 				<!--table-->

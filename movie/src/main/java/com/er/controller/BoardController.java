@@ -83,7 +83,7 @@ public class BoardController {
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO board,  @ModelAttribute("pg") Paging pg, RedirectAttributes rttr) {
+	public String modify(BoardVO board, @ModelAttribute("pg") Paging pg, RedirectAttributes rttr) {
 		
 		log.info("modify..... " + board);
 		
@@ -96,6 +96,8 @@ public class BoardController {
 		
 		rttr.addAttribute("pageNum", pg.getPageNum());
 		rttr.addAttribute("amount", pg.getAmount());
+		rttr.addAttribute("type", pg.getType());
+		rttr.addAttribute("keyword", pg.getKeyword());
 		
 		return "redirect:/board/get?seq=" + board.getSeq();
 	}
@@ -117,10 +119,13 @@ public class BoardController {
 			rttr.addFlashAttribute("result", "success");
 		}
 		
-		rttr.addAttribute("pageNum", pg.getPageNum());
-		rttr.addAttribute("amount", pg.getAmount());
+		//UriComponentsBuilder (2)
+		//rttr.addAttribute("pageNum", pg.getPageNum());
+		//rttr.addAttribute("amount", pg.getAmount());
+		//rttr.addAttribute("type", pg.getType());
+		//rttr.addAttribute("keyword", pg.getKeyword());
 		
-		return "redirect:/board/list";
+		return "redirect:/board/list" + pg.getListLink();
 		
 	}
 	
