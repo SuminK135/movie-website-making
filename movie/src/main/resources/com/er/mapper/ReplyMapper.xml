@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.er.mapper.ReplyMapper">
+	
+	<insert id="insert">
+		insert into board2_reply (
+			rno, 
+			seq, 
+			reply, 
+			writer, 
+			wdate,
+			mdate
+		) 
+		values (
+			#{rno},
+			#{seq}, 
+			#{reply}, 
+			#{writer}, 
+			now(),
+			now()
+		)
+	</insert>
+	
+	<select id="read" resultType="com.er.domain.ReplyVO">
+		select * from board2_reply where rno = #{rno}
+	</select>
+	
+	<delete id="delete">
+		delete from board2_reply where rno = #{rno}
+	</delete>
+	
+	<update id="update">
+		update board2_reply 
+			set 
+			reply = #{reply},
+			mdate = now()
+		where rno = #{rno}
+	</update>
+	
+	<select id="getListWithPaging" resultType="com.er.domain.ReplyVO">
+		select rno, seq, reply, writer, wdate, mdate
+		from board2_reply
+		where seq = #{seq}
+		order by rno asc
+	</select>
+	
+</mapper>

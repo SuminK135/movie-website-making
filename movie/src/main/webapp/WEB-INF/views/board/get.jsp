@@ -21,7 +21,29 @@
 	<style type="text/css"></style>
 	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script type="text/javascript">
+ 		$(document).ready(function() {
+			
+			//console.log(replyService);
+			console.log("==========");
+			console.log("JS TEST");
+			
+			var seqValue = '<c:out value="${board.seq}"/>';
+			
+			//for replyService add test
+			replyService.add(
+				{ reply: "JS Test", 
+				  writer: "Tester", 
+				  seq: seqValue
+				},
+				function(result) {
+					alert("RESULT: " + result);
+				}	
+			);
+
+		});
+	
 		$(document).ready(function() {
 			
 			var result = '<c:out value="${result}"/>';
