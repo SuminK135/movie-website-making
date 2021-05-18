@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/css/style.css" />
 	<!-- JS -->
-	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery.cookie.min.js"></script>	
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery.bxslider.js"></script>

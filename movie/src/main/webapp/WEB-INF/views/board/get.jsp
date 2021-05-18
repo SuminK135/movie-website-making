@@ -19,11 +19,12 @@
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/css/board_get.css" />
 	<style type="text/css"></style>
-	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/resources/js/reply.js"></script>
 	<script type="text/javascript">
- 		$(document).ready(function() {
+		$(document).ready(function() {
 			
 			//console.log(replyService);
 			console.log("==========");
@@ -32,7 +33,7 @@
 			var seqValue = '<c:out value="${board.seq}"/>';
 			
 			//for replyService add test
-			replyService.add(
+			/* replyService.add(
 				{ reply: "JS Test", 
 				  writer: "Tester", 
 				  seq: seqValue
@@ -40,10 +41,45 @@
 				function(result) {
 					alert("RESULT: " + result);
 				}	
-			);
-
+			); */
+			
+			// reply get test
+			/* replyService.getList({seq:seqValue, page:1}, function(list) {
+				for(var i=0, len=list.length||0; i<len; i++) {
+					console.log(list[i]);
+				}
+			}); */
+			
+			// reply remove test
+			/* replyService.remove(20, function(count) {
+				
+				console.log(count);
+				
+				if(count === "success") {
+					alert("REMOVED");
+				}
+				
+			}, function(err) {
+				alert('REMOVE REPLY ERROR....');
+			}); */
+			
+			// reply modify test
+			/* replyService.update({
+				rno : 19,
+				seq : seqValue,
+				reply : "Modified Reply....."
+			}, function(result) {
+				alert("댓글 수정 완료");
+			}); */
+			
+			// get test : 10번 댓글 가져오기
+			replyService.get(10, function(data) {
+				console.log(data);
+			});
+			
 		});
-	
+	</script>
+	<script type="text/javascript">
 		$(document).ready(function() {
 			
 			var result = '<c:out value="${result}"/>';
@@ -132,34 +168,20 @@
 						</tr>
 						
 					</table>
+					
+					<table>
+						<tr>
+							<th>이름</th>
+							<td>이름</td>
+						</tr>
+						<tr>내용</tr>
+						<tr>이름</tr>
+						<tr>내용</tr>
+					</table>
 				</div>
 				
 				<div class="btn_area">
 					<div class="align_left">
-					
-					<form id="moveListPaging" action="/board/list" method="get">
-						<input type="hidden" name="pageNum" value="${pg.pageNum }">
-						<input type="hidden" name="amount" value="${pg.amount }">
-						<input type="hidden" name="type" value="${pg.type }">
-						<input type="hidden" name="keyword" value="${pg.keyword }">
-					</form>
-					
-					<form id="modifyPaging" action="/board/modify" method="get">
-						<input type="hidden" name="seq" value="${board.seq }">
-						<input type="hidden" name="pageNum" value="${pg.pageNum }">
-						<input type="hidden" name="amount" value="${pg.amount }">
-						<input type="hidden" name="type" value="${pg.type }">
-						<input type="hidden" name="keyword" value="${pg.keyword }">
-					</form>
-					
-					<form id="removePaging" action="/board/remove" method="get">
-						<input type="hidden" name="seq" value="${board.seq }">
-						<input type="hidden" name="pageNum" value="${pg.pageNum }">
-						<input type="hidden" name="amount" value="${pg.amount }">
-						<input type="hidden" name="type" value="${pg.type }">
-						<input type="hidden" name="keyword" value="${pg.keyword }">
-					</form>
-								
 						<input type="button" 
 								value="목록" 
 								class="btn_list btn_txt02" 
@@ -180,6 +202,29 @@
 								onclick="location.href='remove'" />
 					</div>	
 				</div>
+			
+				<form id="moveListPaging" action="/board/list" method="get">
+					<input type="hidden" name="pageNum" value="${pg.pageNum }">
+					<input type="hidden" name="amount" value="${pg.amount }">
+					<input type="hidden" name="type" value="${pg.type }">
+					<input type="hidden" name="keyword" value="${pg.keyword }">
+				</form>
+					
+				<form id="modifyPaging" action="/board/modify" method="get">
+					<input type="hidden" name="seq" value="${board.seq }">
+					<input type="hidden" name="pageNum" value="${pg.pageNum }">
+					<input type="hidden" name="amount" value="${pg.amount }">
+					<input type="hidden" name="type" value="${pg.type }">
+					<input type="hidden" name="keyword" value="${pg.keyword }">
+				</form>
+					
+				<form id="removePaging" action="/board/remove" method="get">
+					<input type="hidden" name="seq" value="${board.seq }">
+					<input type="hidden" name="pageNum" value="${pg.pageNum }">
+					<input type="hidden" name="amount" value="${pg.amount }">
+					<input type="hidden" name="type" value="${pg.type }">
+					<input type="hidden" name="keyword" value="${pg.keyword }">
+				</form>
 				
 			</div>
 			

@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="/resources/css/base/jquery-ui.css" />
 	<link rel="stylesheet" href="/resources/css/board_register.css" />
 	<style type="text/css"></style>
-	<script type="text/javascript" src="/resources/js/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 	window.onload = function() {
