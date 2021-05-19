@@ -95,7 +95,7 @@ a:active {
 	font-weight: 600;
 }
 
-/* Align*/
+/* Align */
 .btn_area {
 	overflow:hidden; 
 	margin:10px 0;
@@ -103,6 +103,44 @@ a:active {
 .align_left {float:left; }
 .align_right {float:right;}
 
+/* Reply */
+.reply-table {
+	background: #FAFAFA;
+}
+
+.reply-tr1 td {
+	border-top: 1px solid #bcbcbc;
+	border-bottom: 1px solid #bcbcbc;
+	padding: 20px 30px;
+	font-size: 12px;
+}
+
+.reply-tr2 td {
+	padding: 10px 30px;
+	font-size: 12px;
+}
+
+.reply-tr3 td {
+	padding: 0 30px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.reply-table input[type=text] {
+	border: 1px solid #404144;
+	background-color: #fff;
+}
+
+.reply-table textarea {
+	border: 1px solid #404144;
+	width:90%;
+	background-color: #fff;
+}
+
+.reply-table input[type=button] {
+	color: #fff;
+	height: 78.8px;
+}
 
 /* Mobile Version
 ------------------------------ */
@@ -111,5 +149,11 @@ a:active {
 	th, td {
 		font-size: 10px;
 	}
+	
+	.reply-tr1 td, .reply-tr2 td {
+		font-size: 10px;
+	}
+	
+	
 	
 }
