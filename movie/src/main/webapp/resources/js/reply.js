@@ -1,5 +1,3 @@
-console.log("Reply Module..........");
-
 var replyService = (function(){
 	
 	
@@ -112,6 +110,7 @@ var replyService = (function(){
 		var dateObj = new Date(timeValue);
 		var str= "";
 		
+		// 최초 작성(or 수정) 후 24시간이 지나지 않은 댓글 시간 표시
 		if(gap < (1000 * 60 * 60 * 24)) {
 			
 			var hh = dateObj.getHours();
@@ -125,7 +124,7 @@ var replyService = (function(){
 			].join('');
 
 		} else {
-		
+			// 최초 작성(or 수정) 후 24시간이 지난 댓글 표시
 			var yy = dateObj.getFullYear();
 			var mm = dateObj.getMonth() + 1; // getMonth() is zero-based
 			var dd = dateObj.getDate();

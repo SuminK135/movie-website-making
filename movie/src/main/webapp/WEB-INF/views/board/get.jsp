@@ -27,9 +27,10 @@
 		$(document).ready(function() {
 			
 			var seqValue = '<c:out value="${board.seq}"/>';
+			//var replyT = $("#reply-table > tbody:first");
 			
 			showList(1);
-			
+			// 댓글 가져오기
 			function showList(page) {
 				
 				replyService.getList({seq : seqValue, page : page||1 }, function(list) {
@@ -37,7 +38,8 @@
 					var str = "";
 					
 					if(list == null || list.length == 0) {
-						replyT.html("");
+						$("#reply-table > tbody:first").append("");;
+						//replyT.html("");
 						return;
 					}
 					
@@ -49,14 +51,42 @@
 						str += "		"+ list[i].reply +"";
 						str += "	</td>";		
 						str += "</tr>";
-						
 					}
-					
 					$("#reply-table > tbody:first").append(str);
 					
 				});
 				
 			}
+			
+			// 댓글 등록하기
+			var replyRegisterBtn = $("#replyRegisterBtn");
+			var replyWriter = $("#replyWriter");
+			var replyContent = $("#replyContent");
+			
+			replyRegisterBtn.on("click", function(e) {
+				
+				var reply = {
+					writer : replyWriter.val(),
+					reply : replyContent.val(),
+					seq : seqValue
+				};
+				
+				replyService.add(reply, function(result) {
+					
+					//alert(result);
+					if(result) {
+						alert("댓글이 등록되었습니다.");
+					}
+					replyWriter.val("");
+					replyContent.val("");
+					
+					location.reload();
+				
+				});
+				
+			});
+			
+			// 댓글 수정하기
 			
 		});
 	</script>
@@ -152,7 +182,7 @@
 				</div>
 				
 				<table class="reply-table" id="reply-table">
-					<tbody id="tbody">
+					<tbody>
 						<!-- <tr class="reply-tr1">
 							<td data-rno=''>
 								<strong>작성자 (2020-05-05)</strong>
@@ -163,14 +193,15 @@
 					</tbody>
 						<tr class="reply-tr2">
 							<td>
-								글쓴이&nbsp;&nbsp;<input type="text">
+								글쓴이&nbsp;&nbsp;<input type="text" id="replyWriter">
 							</td>
 						</tr>
 						<tr class="reply-tr3">
 							<td>
-								<textarea rows="4" cols=""></textarea>
+								<textarea rows="4" id="replyContent"></textarea>
 								<input type="button" 
 									   value="댓글달기"
+									   id="replyRegisterBtn"
 									   class="btn_write" 
 									   style="cursor: pointer;" />
 							</td>
