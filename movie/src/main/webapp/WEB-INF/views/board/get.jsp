@@ -26,6 +26,8 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
+			$("#dialog").hide();
+			
 			var seqValue = '<c:out value="${board.seq}"/>';
 			//var replyT = $("#reply-table > tbody:first");
 			
@@ -38,7 +40,7 @@
 					var str = "";
 					
 					if(list == null || list.length == 0) {
-						$("#reply-table > tbody:first").append("");;
+						$("#reply-table > tbody:first").append("");
 						//replyT.html("");
 						return;
 					}
@@ -82,6 +84,56 @@
 
 					});
 					
+					// 댓글 수정하기
+					$("#reply-table > tbody").on("click", "td", function(e) {
+				
+						var rno = $(this).attr("data-rno");
+					
+						var replyModWriter = $(".m-writer");
+						var replyModContent = $(".m-reply");
+						
+						replyService.get(rno, function(reply) {
+							
+							replyModWriter.val(reply.writer);
+							replyModContent.val(reply.reply);
+							
+							$( "#dialog" ).dialog({ autoOpen: false });
+
+							$( function() {
+							    $( "#dialog" ).dialog({
+							    	modal: true,
+							      	buttons: {
+							      	수정완료: function() {
+							          	
+							      		var reply = {
+							      			rno : rno,
+							      			reply : replyModContent.val()
+							      		}
+							      		
+							        	replyService.update(reply, function(result) {
+											
+							        		alert(result);
+							        	
+							        	});
+							      		
+							      		$(this).dialog("close");
+							      		location.reload();
+							      	}
+							    	}
+							   });
+							});
+							
+							$(".replyModBtn").on("click", function(e) {
+								
+								$( "#dialog" ).dialog("open");
+								
+							});
+							
+							
+						});
+				
+					});
+					
 				});
 				
 			}
@@ -101,7 +153,6 @@
 				
 				replyService.add(reply, function(result) {
 					
-					//alert(result);
 					if(result) {
 						alert("댓글이 등록되었습니다.");
 					}
@@ -113,27 +164,6 @@
 				});
 				
 			});
-			
-			
-
- 			/* $("#reply-table > tbody").on("click", "td", function(e) {
-				
-				var rno = $(this).attr("data-rno");
-				alert(rno);
-				
-				replyService.get(rno, function(reply) {
-					var replyModContent = reply.reply;
-					alert(replyModContent);
-				});
-				
-			}); */
- 			
- 			/* $(".replyDelBtn").on("click", function(e) {
-				
- 				
-
-			}); */
-			
 			
 		});
 	</script>
@@ -192,6 +222,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- REPLY MODAL -->
+	<div id="dialog" class="ReplyModal" title="댓글을 수정하시겠습니까?">
+		<p>작성자</p>
+		<p><input type="text" class="m-writer" name="writer" readonly="readonly"></p>
+		<br>
+		<p>댓글</p>
+		<p><textarea rows="4" class="m-reply" name="reply"></textarea></p>
+	</div>
 
 	<%@include file="../includes/header.jsp" %>
 	<hr>

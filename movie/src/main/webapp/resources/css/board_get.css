@@ -135,11 +135,28 @@ a:active {
 	border: 1px solid #404144;
 	width:90%;
 	background-color: #fff;
+	resize: none;
 }
 
 .reply-table input[type=button] {
 	color: #fff;
 	height: 78.8px;
+}
+
+.ReplyModal {
+	font-size: 14px;
+}
+
+.ReplyModal input {
+	width: 100%;
+	border: 1px solid #404144;
+	background-color: #F2F2F2;
+}
+
+.ReplyModal textarea {
+	width: 100%;
+	border: 1px solid #404144;
+	resize: none;
 }
 
 /* Mobile Version
