@@ -45,14 +45,42 @@
 					
 					for(var i=0, len=list.length||0; i<len; i++) {
 						str += "<tr class='reply-tr1'>";
-						str += "	<td data-rno='"+list[i].rno+"'>";
+						str += "	<td id='rno-td' data-rno='"+list[i].rno+"'>";
 						str += "		<strong>" + list[i].writer + " (" + replyService.displayTime(list[i].mdate) + ")</strong>";
+						str += "		&nbsp;"
+						str += "		<button type='button' class='replyModBtn'><img src='/resources/images/pen2.png' alt='댓글수정'></button>";
+						str += "		<button type='button' class='replyDelBtn'><img src='/resources/images/icon_del.gif' alt='댓글삭제'></button>";
 						str += "		<br>"
 						str += "		"+ list[i].reply +"";
 						str += "	</td>";		
 						str += "</tr>";
 					}
 					$("#reply-table > tbody:first").append(str);
+					
+					// 댓글 삭제하기
+					$(".replyDelBtn").on("click", function(e) {
+						
+						if (!confirm("댓글을 삭제하시겠습니까?")) {
+							
+							return;
+							
+					    } else {
+					        
+					    	var rno = $("#rno-td").attr("data-rno");
+					    	
+					    	replyService.remove(rno, function(result) {
+								
+								if(result) {
+									alert("댓글이 삭제되었습니다.");
+								}
+								
+								location.reload();
+								
+							});
+					    	
+					    }
+
+					});
 					
 				});
 				
@@ -86,7 +114,26 @@
 				
 			});
 			
-			// 댓글 수정하기
+			
+
+ 			/* $("#reply-table > tbody").on("click", "td", function(e) {
+				
+				var rno = $(this).attr("data-rno");
+				alert(rno);
+				
+				replyService.get(rno, function(reply) {
+					var replyModContent = reply.reply;
+					alert(replyModContent);
+				});
+				
+			}); */
+ 			
+ 			/* $(".replyDelBtn").on("click", function(e) {
+				
+ 				
+
+			}); */
+			
 			
 		});
 	</script>
