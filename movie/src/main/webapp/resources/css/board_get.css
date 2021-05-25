@@ -159,6 +159,22 @@ a:active {
 	resize: none;
 }
 
+.ReplyModal2 {
+	font-size: 14px;
+}
+
+.ReplyModal2 input {
+	width: 100%;
+	border: 1px solid #404144;
+	/* background-color: #F2F2F2; */
+}
+
+.ReplyModal2 textarea {
+	width: 100%;
+	border: 1px solid #404144;
+	resize: none;
+}
+
 /*Reply Paging*/
 .replyPageFooter {
 	list-style: none;

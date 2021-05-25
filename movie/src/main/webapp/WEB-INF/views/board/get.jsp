@@ -26,7 +26,8 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
-			$( "#dialog" ).dialog({ autoOpen: false });
+			$("#dialog").dialog({ autoOpen: false });
+			$("#dialog2").dialog({ autoOpen: false });
 			
 			var seqValue = '<c:out value="${board.seq}"/>';
 			var replyT = $("#reply-table");
@@ -91,7 +92,7 @@
 				
 			});
 			
-			showList(1);	
+			showList(1);
 			
 			// 댓글 가져오기
 			function showList(page) {
@@ -136,11 +137,11 @@
 					
 				});
 			
-			}
-			
+			}	
 
 			// 댓글 수정/삭제하기
 			$(".reply-table").on("click", "td > .replyModBtn", function(e) {
+				
 				$( "#dialog" ).dialog("open");
 				
 				var rno = $(this).attr("data-rno");
@@ -155,7 +156,7 @@
 					replyModContent.val(reply.reply);
 					
 					$( function() {
-					    $( "#dialog" ).dialog({
+					    $("#dialog").dialog({
 					    	modal: true,
 					      	buttons: {
 					      	삭제: function() {
@@ -238,7 +239,7 @@
 			});
 			
 			
-			//댓글등록
+			//댓글등록	
 			replyRegisterBtn.on("click", function(e) {
 				
 				if(replyWriter.val().trim() == "") {
@@ -257,6 +258,7 @@
 					seq : seqValue
 				};
 				
+
 				replyService.add(reply, function(result) {
 					
 					if(result) {
@@ -267,10 +269,63 @@
 						showList(1);
 					
 					}
-					
+
 				});
-			
+
 			});
+			
+			/* replyRegisterBtn.on("click", function(e) {
+				
+				if(replyWriter.val().trim() == "") {
+					alert("이름을 입력하세요.");
+					return false;
+				}
+				
+				if(replyContent.val().trim() == "") {
+					alert("내용을 입력하세요.");
+					return false;
+				}
+				
+				$("#dialog2").dialog("open");
+				
+				var reply = {
+						writer : replyWriter.val(),
+						reply : replyContent.val(),
+						seq : seqValue
+					};
+				
+				$(".r-writer").val(reply.writer);
+				$(".r-reply").val(reply.reply);
+				
+				
+				$(function() {
+					$("#dialog2").dialog({
+						modal: true,
+						buttons:{
+							등록 : function() {
+								
+								replyService.add(reply, function(result) {
+									
+									if(result) {
+										alert("댓글이 등록되었습니다.");
+									
+									}
+									
+								});
+								
+								$(this).dialog("close");
+								replyWriter.val("");
+								replyContent.val("");
+								
+								showList(pageNum);
+								
+							}
+					
+						}
+					});
+				});
+				
+			}); */
 			
 		});
 	</script>
@@ -337,6 +392,15 @@
 		<br>
 		<p>댓글</p>
 		<p><textarea rows="4" class="m-reply" name="reply"></textarea></p>
+	</div>
+	
+	<!-- REPLY REGISER MODAL -->
+	<div id="dialog2" class="ReplyModal2" title="댓글을 등록하시겠습니까?">
+		<p>작성자</p>
+		<p><input type="text" class="r-writer" name="writer"></p>
+		<br>
+		<p>댓글</p>
+		<p><textarea rows="4" class="r-reply" name="reply"></textarea></p>
 	</div>
 
 	<%@include file="../includes/header.jsp" %>
