@@ -26,10 +26,10 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
-			$("#dialog").hide();
+			$( "#dialog" ).dialog({ autoOpen: false });
 			
 			var seqValue = '<c:out value="${board.seq}"/>';
-			var replyT = $("#reply-table > tbody:first");
+			var replyT = $("#reply-table");
 			
 			var replyWriter = $("#replyWriter");
 			var replyContent = $("#replyContent");
@@ -70,8 +70,6 @@
 					str += "<li class='page-item'><a class='page-link' href='"+ (endNum + 1) +"'>Next</a></li>";
 				}
 				
-				//str += "</ul>";
-				
 				console.log("str: " + str);
 				$(".replyPageFooter").html(str);
 			}
@@ -101,7 +99,7 @@
 				console.log("Show List: " + page);
 				
 				replyService.getList({seq : seqValue, page : page||1 }, function(replyCnt, list) {
-					
+										
 					console.log("replyCnt: " + replyCnt);
 					console.log("list: " + list);
 									
@@ -110,6 +108,7 @@
 						showList(pageNum);
 						return;
 					}
+					
 					console.log("Show List: " + page);
 					
 					var str = "";
@@ -121,106 +120,136 @@
 					
 					for(var i=0, len=list.length||0; i<len; i++) {
 						str += "<tr class='reply-tr1'>";
-						str += "	<td id='rno-td' data-rno='"+list[i].rno+"'>";
+						str += "	<td id='rno-td'>";
 						str += "		<strong>" + list[i].writer + " (" + replyService.displayTime(list[i].mdate) + ")</strong>";
 						str += "		&nbsp;"
-						str += "		<button type='button' class='replyModBtn'><img src='/resources/images/pen2.png' alt='댓글수정'></button>";
-						str += "		<button type='button' class='replyDelBtn'><img src='/resources/images/icon_del.gif' alt='댓글삭제'></button>";
+						str += "		<button type='button' class='replyModBtn' data-rno='"+list[i].rno+"'><img src='/resources/images/pen2.png' alt='댓글수정'></button>";
+						str += "		<button type='button' class='replyDelBtn' data-rno='"+list[i].rno+"'><img src='/resources/images/icon_del.gif' alt='댓글삭제'></button>";
 						str += "		<br>"
 						str += "		"+ list[i].reply +"";
 						str += "	</td>";		
 						str += "</tr>";
 					}
 					replyT.html(str);
-					//$("#reply-table > tbody:first").append(str);
+					
 					showReplyPage(replyCnt);
-					
-					
-					// 댓글 삭제하기
-					$(".replyDelBtn").on("click", function(e) {
-						
-						if (!confirm("댓글을 삭제하시겠습니까?")) {
-							
-							return;
-							
-					    } else {
-					        
-					    	var rno = $("#rno-td").attr("data-rno");
-					    	
-					    	replyService.remove(rno, function(result) {
-								
-								if(result) {
-									alert("댓글이 삭제되었습니다.");
-								}
-								
-								showList(pageNum);
-								//location.reload();
-								
-							});
-					    	
-					    }
-
-					});
-					
-					// 댓글 수정하기
-					$("#reply-table > tbody").on("click", "td", function(e) {
-				
-						var rno = $(this).attr("data-rno");
-					
-						var replyModWriter = $(".m-writer");
-						var replyModContent = $(".m-reply");
-						
-						replyService.get(rno, function(reply) {
-							
-							replyModWriter.val(reply.writer);
-							replyModContent.val(reply.reply);
-							
-							$( "#dialog" ).dialog({ autoOpen: false });
-
-							$( function() {
-							    $( "#dialog" ).dialog({
-							    	modal: true,
-							      	buttons: {
-							      	수정완료: function() {
-							          	
-							      		var reply = {
-							      			rno : rno,
-							      			reply : replyModContent.val()
-							      		}
-							      		
-							        	replyService.update(reply, function(result) {
-											
-							        		if(result) {
-							        			alert("수정되었습니다.");
-							        		}
-							        	
-							        	});
-							      		
-							      		$(this).dialog("close");
-							      		showList(pageNum);
-							      	}
-							    	}
-							   });
-							});
-							
-							$(".replyModBtn").on("click", function(e) {
-								
-								$( "#dialog" ).dialog("open");
-								
-							});
-							
-							
-						});
-				
-					});
 					
 				});
 			
-				
 			}
+			
+
+			// 댓글 수정/삭제하기
+			$(".reply-table").on("click", "td > .replyModBtn", function(e) {
+				$( "#dialog" ).dialog("open");
+				
+				var rno = $(this).attr("data-rno");
+				console.log("rno: "+rno);
+			
+				var replyModWriter = $(".m-writer");
+				var replyModContent = $(".m-reply");
+				
+				replyService.get(rno, function(reply) {
+					
+					replyModWriter.val(reply.writer);
+					replyModContent.val(reply.reply);
+					
+					$( function() {
+					    $( "#dialog" ).dialog({
+					    	modal: true,
+					      	buttons: {
+					      	삭제: function() {
+					          	
+
+					      		if (!confirm("댓글을 삭제하시겠습니까?")) {
+									
+									return;
+									
+							    } else {
+							    	
+							    	replyService.remove(rno, function(result) {
+										
+						        		if(result) {
+						        			alert("댓글이 삭제되었습니다.");
+						        		}
+						        	
+						        	});
+							    	
+							    }
+					      		
+					      		
+					      		$(this).dialog("close");
+					      		showList(pageNum);
+					      	},
+					      	
+							수정: function() {
+					          	
+					      		var reply = {
+					      			rno : rno,
+					      			reply : replyModContent.val()
+					      		}
+					      		
+					        	replyService.update(reply, function(result) {
+									
+					        		if(result) {
+					        			alert("댓글이 수정되었습니다.");
+					        		}
+					        	
+					        	});
+					      		
+					      		$(this).dialog("close");
+					      		showList(pageNum);
+					      	}
+					      	
+					    	}
+					   });
+					});
+										
+				});
+
+		
+			});
+			
+			
+			//댓글 삭제하기
+			$(".reply-table").on("click", "td > .replyDelBtn", function(e) {
+				
+				var rno = $(this).attr("data-rno");
+				console.log("rno2: "+rno);
+				
+				if (!confirm("댓글을 삭제하시겠습니까?")) {
+					
+					return;
+					
+			    } else {
+			    	
+			    	replyService.remove(rno, function(result) {
+						
+		        		if(result) {
+		        			alert("댓글이 삭제되었습니다.");
+		        		}
+		        	
+		        	});
+			    	
+			    }
+				
+				showList(pageNum);
+				
+			});
+			
 			
 			//댓글등록
 			replyRegisterBtn.on("click", function(e) {
+				
+				if(replyWriter.val().trim() == "") {
+					alert("이름을 입력하세요.");
+					return false;
+				}
+				
+				if(replyContent.val().trim() == "") {
+					alert("내용을 입력하세요.");
+					return false;
+				}
 				
 				var reply = {
 					writer : replyWriter.val(),
@@ -234,7 +263,7 @@
 						alert("댓글이 등록되었습니다.");
 						replyWriter.val("");
 						replyContent.val("");
-
+						
 						showList(1);
 					
 					}
@@ -242,7 +271,6 @@
 				});
 			
 			});
-			
 			
 		});
 	</script>
@@ -301,8 +329,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<!-- REPLY MODAL -->
-	<div id="dialog" class="ReplyModal" title="댓글을 수정하시겠습니까?">
+	<div id="dialog" class="ReplyModal" title="댓글을 수정/삭제하시겠습니까?">
 		<p>작성자</p>
 		<p><input type="text" class="m-writer" name="writer" readonly="readonly"></p>
 		<br>
@@ -345,7 +374,7 @@
 					</table>
 				</div>
 				
-				<table class="reply-table" id="reply-table">
+				<table class="reply-table 1" id="reply-table">
 					<tbody>
 						<!-- <tr class="reply-tr1">
 							<td data-rno=''>
@@ -355,6 +384,9 @@
 							</td>
 						</tr> -->
 					</tbody>
+
+				</table>
+				<table class="reply-table 2">
 						<tr>
 							<td>
 									<ul class="replyPageFooter">
@@ -375,7 +407,7 @@
 									   class="btn_write" 
 									   style="cursor: pointer;" />
 							</td>
-						</tr>
+						</tr>				
 				</table>
 				
 				<div class="btn_area">

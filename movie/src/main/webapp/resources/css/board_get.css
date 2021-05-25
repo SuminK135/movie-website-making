@@ -161,9 +161,23 @@ a:active {
 
 /*Reply Paging*/
 .replyPageFooter {
+	list-style: none;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
+	padding: 5px;
 }
+
+.replyPageFooter li {
+	padding: 0 10px;
+	font-size: 14px;
+}
+
+.replyPageFooter .active > a {
+	color: #f60;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
 
 /* Mobile Version
 ------------------------------ */
