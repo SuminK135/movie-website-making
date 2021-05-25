@@ -37,11 +37,27 @@
 		where rno = #{rno}
 	</update>
 	
-	<select id="getListWithPaging" resultType="com.er.domain.ReplyVO">
-		select rno, seq, reply, writer, wdate, mdate
+	<!-- <select id="getListWithPaging" resultType="com.er.domain.ReplyVO">
+		select rno, seq, reply, writer, mdate
 		from board2_reply
 		where seq = #{seq}
 		order by rno asc
+	</select> -->
+	
+	<select id="getListWithPaging" resultType="com.er.domain.ReplyVO">
+		<![CDATA[
+		select rno, seq, reply, writer, wdate, mdate
+		from board2_reply
+		where seq = #{seq}
+		order by seq desc, rno asc
+		limit #{pg.skip}, #{pg.amount}
+		]]>
+	</select>
+	
+	<select id="getCountBySeq" resultType="int">
+		<![CDATA[
+		select count(rno) from board2_reply where seq = #{seq}
+		]]>
 	</select>
 	
 </mapper>

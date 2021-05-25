@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.er.domain.Paging;
+import com.er.domain.ReplyPageDTO;
 import com.er.domain.ReplyVO;
 import com.er.service.ReplyService;
 
@@ -55,7 +56,7 @@ public class ReplyController {
 	@GetMapping(value = "/pages/{seq}/{page}",
 		produces = { MediaType.APPLICATION_XML_VALUE,
 					 MediaType.APPLICATION_JSON_UTF8_VALUE })
-	public ResponseEntity<List<ReplyVO>> getList(@PathVariable("page") int page, @PathVariable("seq") int seq) {
+	public ResponseEntity<ReplyPageDTO> getList(@PathVariable("page") int page, @PathVariable("seq") int seq) {
 		
 		log.info("getList..........");
 		
@@ -63,7 +64,7 @@ public class ReplyController {
 		
 		log.info(pg);
 		
-		return new ResponseEntity<>(service.getList(pg, seq), HttpStatus.OK);
+		return new ResponseEntity<>(service.getListPage(pg, seq), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/{rno}",

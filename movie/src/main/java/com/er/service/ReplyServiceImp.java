@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.er.domain.Paging;
+import com.er.domain.ReplyPageDTO;
 import com.er.domain.ReplyVO;
 import com.er.mapper.ReplyMapper;
 
@@ -59,6 +60,15 @@ public class ReplyServiceImp implements ReplyService {
 		log.info("Get Reply List of a Board: " + seq);
 		
 		return mapper.getListWithPaging(pg, seq);
+	}
+
+	@Override
+	public ReplyPageDTO getListPage(Paging pg, int seq) {
+		// TODO Auto-generated method stub
+		
+		return new ReplyPageDTO(
+			mapper.getCountBySeq(seq),
+			mapper.getListWithPaging(pg, seq));
 	}
 
 }

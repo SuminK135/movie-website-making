@@ -159,6 +159,12 @@ a:active {
 	resize: none;
 }
 
+/*Reply Paging*/
+.replyPageFooter {
+	display: flex;
+	justify-content: space-between;
+}
+
 /* Mobile Version
 ------------------------------ */
 @media (max-width: 800px) {

@@ -3,6 +3,7 @@ package com.er.service;
 import java.util.List;
 
 import com.er.domain.Paging;
+import com.er.domain.ReplyPageDTO;
 import com.er.domain.ReplyVO;
 
 public interface ReplyService {
@@ -17,5 +18,5 @@ public interface ReplyService {
 	
 	List<ReplyVO> getList(Paging pg, int seq);
 	
-	
+	public ReplyPageDTO getListPage(Paging pg, int seq);
 }

@@ -86,7 +86,7 @@ public class ReplyMapperTests {
 		
 	}
 */
-	
+/*
 	@Test
 	public void testList() {
 		
@@ -96,5 +96,14 @@ public class ReplyMapperTests {
 		replies.forEach(reply -> log.info(reply));
 		
 	}
-	
+*/
+	@Test
+	public void testList2() {
+		
+		Paging pg = new Paging(2, 10);
+		
+		List<ReplyVO> replies = mapper.getListWithPaging(pg, 113);
+		
+		replies.forEach(reply -> log.info(reply));
+	}
 }

@@ -29,19 +29,93 @@
 			$("#dialog").hide();
 			
 			var seqValue = '<c:out value="${board.seq}"/>';
-			//var replyT = $("#reply-table > tbody:first");
+			var replyT = $("#reply-table > tbody:first");
 			
-			showList(1);
+			var replyWriter = $("#replyWriter");
+			var replyContent = $("#replyContent");
+			var replyRegisterBtn = $("#replyRegisterBtn");
+			
+			//댓글 페이징
+			var pageNum = 1;
+			var replyPageFooter = $(".replyPageFooter");
+			
+			function showReplyPage(replyCnt) {
+				
+				var endNum = Math.ceil(pageNum / 10.0) * 10;
+				var startNum = endNum - 9;
+				
+				var prev = startNum != 1;
+				var next = false;
+				
+				if(endNum * 10 >= replyCnt) {
+					endNum = Math.ceil(replyCnt/10.0);
+				}
+				
+				if(endNum * 10 < replyCnt) {
+					next = true;
+				}
+				
+				var str = "";
+				
+				if(prev) {
+					str += "<li class='page-item'><a class='page-link' href='" + (startNum - 1) + "'>Previous</a></li>";
+				}
+				
+				for(var i = startNum; i <= endNum; i++) {
+					var active = pageNum == i ? "active" : "";
+					str += "<li class='page-item " + active + "'><a class='page-link' href='" + i + "'>"+i+"</a></li>";
+				}
+				
+				if(next) {
+					str += "<li class='page-item'><a class='page-link' href='"+ (endNum + 1) +"'>Next</a></li>";
+				}
+				
+				//str += "</ul>";
+				
+				console.log("str: " + str);
+				$(".replyPageFooter").html(str);
+			}
+			
+			
+			replyPageFooter.on("click", "li a", function(e) {
+				
+				e.preventDefault();
+				
+				console.log("page click");
+				
+				var targetPageNum = $(this).attr("href");
+				
+				console.log("targetPageNum: " + targetPageNum);
+				
+				pageNum = targetPageNum;
+				
+				showList(pageNum);
+				
+			});
+			
+			showList(1);	
+			
 			// 댓글 가져오기
 			function showList(page) {
 				
-				replyService.getList({seq : seqValue, page : page||1 }, function(list) {
+				console.log("Show List: " + page);
+				
+				replyService.getList({seq : seqValue, page : page||1 }, function(replyCnt, list) {
+					
+					console.log("replyCnt: " + replyCnt);
+					console.log("list: " + list);
+									
+					if(page == -1) {
+						pageNum = Math.ceil(replyCnt/10.0);
+						showList(pageNum);
+						return;
+					}
+					console.log("Show List: " + page);
 					
 					var str = "";
 					
 					if(list == null || list.length == 0) {
-						$("#reply-table > tbody:first").append("");
-						//replyT.html("");
+						replyT.html("");
 						return;
 					}
 					
@@ -57,7 +131,10 @@
 						str += "	</td>";		
 						str += "</tr>";
 					}
-					$("#reply-table > tbody:first").append(str);
+					replyT.html(str);
+					//$("#reply-table > tbody:first").append(str);
+					showReplyPage(replyCnt);
+					
 					
 					// 댓글 삭제하기
 					$(".replyDelBtn").on("click", function(e) {
@@ -76,7 +153,8 @@
 									alert("댓글이 삭제되었습니다.");
 								}
 								
-								location.reload();
+								showList(pageNum);
+								//location.reload();
 								
 							});
 					    	
@@ -112,12 +190,14 @@
 							      		
 							        	replyService.update(reply, function(result) {
 											
-							        		alert(result);
+							        		if(result) {
+							        			alert("수정되었습니다.");
+							        		}
 							        	
 							        	});
 							      		
 							      		$(this).dialog("close");
-							      		location.reload();
+							      		showList(pageNum);
 							      	}
 							    	}
 							   });
@@ -135,14 +215,11 @@
 					});
 					
 				});
+			
 				
 			}
 			
-			// 댓글 등록하기
-			var replyRegisterBtn = $("#replyRegisterBtn");
-			var replyWriter = $("#replyWriter");
-			var replyContent = $("#replyContent");
-			
+			//댓글등록
 			replyRegisterBtn.on("click", function(e) {
 				
 				var reply = {
@@ -155,15 +232,17 @@
 					
 					if(result) {
 						alert("댓글이 등록되었습니다.");
-					}
-					replyWriter.val("");
-					replyContent.val("");
+						replyWriter.val("");
+						replyContent.val("");
+
+						showList(1);
 					
-					location.reload();
-				
+					}
+					
 				});
-				
+			
 			});
+			
 			
 		});
 	</script>
@@ -276,6 +355,12 @@
 							</td>
 						</tr> -->
 					</tbody>
+						<tr>
+							<td>
+									<ul class="replyPageFooter">
+									</ul>
+							</td>
+						</tr>
 						<tr class="reply-tr2">
 							<td>
 								글쓴이&nbsp;&nbsp;<input type="text" id="replyWriter">

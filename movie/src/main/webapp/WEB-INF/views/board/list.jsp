@@ -163,18 +163,6 @@
 								</li>
 	
 							</ul>
-							
-							<!-- <ul>
-								<li>
-									<div class="align_right">
-										<button type="button"
-										class="btn_write btn_txt01" 
-										style="cursor: pointer;" 
-										onclick="location.href='/board/register'">글쓰기</button>
-									</div>
-								</li>
-							</ul> -->
-							
 						</div>
 						<!-- //페이징 -->
 						

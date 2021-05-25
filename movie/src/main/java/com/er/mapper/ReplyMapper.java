@@ -22,4 +22,37 @@ public interface ReplyMapper {
 			@Param("seq") int seq
 			);
 	
+	public int getCountBySeq(int seq);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
