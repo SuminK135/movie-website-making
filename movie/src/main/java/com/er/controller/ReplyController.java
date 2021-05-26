@@ -62,7 +62,9 @@ public class ReplyController {
 		
 		Paging pg = new Paging(page, 10);
 		
-		log.info(pg);
+		log.info("Get Reply List Seq: " + seq);
+		
+		log.info("pg: " + pg);
 		
 		return new ResponseEntity<>(service.getListPage(pg, seq), HttpStatus.OK);
 	}

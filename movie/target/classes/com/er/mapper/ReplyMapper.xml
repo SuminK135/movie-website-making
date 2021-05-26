@@ -49,6 +49,7 @@
 		select rno, seq, reply, writer, wdate, mdate
 		from board2_reply
 		where seq = #{seq}
+		and rno > 0
 		order by seq desc, rno asc
 		limit #{pg.skip}, #{pg.amount}
 		]]>

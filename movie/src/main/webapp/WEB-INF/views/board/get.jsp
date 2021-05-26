@@ -104,11 +104,11 @@
 					console.log("replyCnt: " + replyCnt);
 					console.log("list: " + list);
 									
-					if(page == -1) {
+					/* if(page == -1) {
 						pageNum = Math.ceil(replyCnt/10.0);
 						showList(pageNum);
 						return;
-					}
+					} */
 					
 					console.log("Show List: " + page);
 					
@@ -266,7 +266,8 @@
 						replyWriter.val("");
 						replyContent.val("");
 						
-						showList(1);
+						//showList(-1);
+						showList(pageNum);
 					
 					}
 

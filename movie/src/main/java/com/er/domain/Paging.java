@@ -32,6 +32,7 @@ public class Paging {
 		
 		this.pageNum = pageNum;
 		this.amount = amount;
+		
 		this.skip = (pageNum - 1) * amount;
 		
 	}
