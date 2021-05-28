@@ -2,6 +2,8 @@ package com.er.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.er.domain.BoardVO;
 import com.er.domain.Paging;
 
@@ -30,4 +32,7 @@ public interface BoardMapper {
 	// Delete
 	int delete(BoardVO board);
 	
+	// 반정규화(Denormalization)
+	void updateReplyCnt(@Param("seq") int seq, @Param("amount") int amount);
+
 }

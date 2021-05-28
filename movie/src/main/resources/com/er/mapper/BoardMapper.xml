@@ -42,7 +42,7 @@
 		
 		<![CDATA[
 		select
-			seq, subject, writer, hit, wdate, datediff(now(), wdate) wgap
+			seq, subject, writer, hit, wdate, datediff(now(), wdate) wgap, replycnt
 		from board2
 		where ]]>
 		
@@ -63,6 +63,14 @@
 		limit #{skip}, #{amount}  -->
 		
 	</select>
+	
+	<update id="updateReplyCnt">
+		update board2 
+		set 
+			replycnt = replycnt + #{amount} 
+		where
+			seq = #{seq}
+	</update>
 	
 	<select id="getBoardTotalCount" resultType="int">
 		select count(*) from board2 

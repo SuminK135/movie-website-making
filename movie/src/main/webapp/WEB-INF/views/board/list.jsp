@@ -114,6 +114,7 @@
 									<td><c:out value="${board.seq }"/></td>
 									<td class="left">
 										<a class="move" href="${board.seq }"><img src="" alt="미리보기">&nbsp;${board.subject }</a>
+										&nbsp;<b>[<c:out value="${board.replyCnt }"/>]</b>
 										<c:if test="${board.wgap eq 0 }">
 											&nbsp;<img src="/resources/images/icon_hot.gif" alt="HOT">
 										</c:if>

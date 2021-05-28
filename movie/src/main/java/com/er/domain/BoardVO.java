@@ -17,4 +17,7 @@ public class BoardVO {
 	private Date wdate;
 	private int wgap;
 	
+	//댓글 수 (반정규화)
+	private int replyCnt;
+
 }
