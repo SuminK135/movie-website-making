@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.er.mapper.BoardAttachMapper">
+
+	<insert id="insert">
+		insert into board2_attach (uuid, uploadpath, filename, filetype, seq)
+		values (#{uuid}, #{uploadpath},#{filename},#{filetype},#{seq})
+	</insert>
+	
+	<delete id="delete">
+		delete from board2_attach where uuid = #{uuid}
+	</delete>
+	
+	<select id="findBySeq" resultType="com.er.domain.BoardAttachVO">
+		select * from board2_attach where seq = #{seq}
+	</select>
+	
+</mapper>

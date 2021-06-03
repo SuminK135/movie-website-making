@@ -18,34 +18,145 @@
 	<script type="text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/resources/js/jquery-ui.min.js"></script>
 	<script type="text/javascript">
-		window.onload = function() {
-			document.getElementById('boardsubmit').onclick = function() {
+/* 	window.onload = function() {
+		document.getElementById('boardsubmit').onclick = function() {
+			
+			if(document.boardfrm.info.checked == false) {
+				alert('개인정보 수집 및 이용에 동의하셔야 합니다.');
+				return false;
+			}
+			
+			if(document.boardfrm.writer.value.trim() == "") {
+				alert('이름을 입력하셔야 합니다.');
+				return false;				
+			}
+			
+			if(document.boardfrm.password.value.trim() == "") {
+				alert('비밀번호를 입력하셔야 합니다.');
+				return false;				
+			}
+			
+			if(document.boardfrm.subject.value.trim() == "") {
+				alert('제목을 입력하셔야 합니다.');
+				return false;				
+			}	
+			
+			document.boardfrm.submit();
+		};
+	}; */
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(e) {
+		
+		var formObj = $("form[role='form']");
+		
+		$("#boardsubmit").on("click", function(e) {
+		
+			e.preventDefault();
+			
+			console.log("submit clicked");
+		
+		});
+	
+		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+		var maxSize = 5242880; //5MB
+		
+		function checkExtension(fileName, fileSize) {
+			
+			if(fileSize >= maxSize) {
+				alert("파일 사이즈 초과");
+				return false;
+			}
 				
-				if(document.boardfrm.info.checked == false) {
-					alert('개인정보 수집 및 이용에 동의하셔야 합니다.');
+			if(regex.test(fileName)) {
+				alert("해당 종류의 파일은 업로드할 수 없습니다.");
+				return false;
+			}
+				
+			return true;
+				
+		}
+		
+		$("input[type='file']").change(function(e) {
+			
+			var formData = new FormData();
+			
+			var inputFile = $("input[name='uploadFile']");
+			var files = inputFile[0].files;
+			console.log(files);
+			
+			for(var i = 0; i < files.length; i++) {
+				
+				if(!checkExtension(files[i].name, files[i].size)) {
 					return false;
 				}
 				
-				if(document.boardfrm.writer.value.trim() == "") {
-					alert('이름을 입력하셔야 합니다.');
-					return false;				
+				formData.append("uploadFile", files[i]);
+				
+			}
+			
+			$.ajax({
+				url: '/uploadAjaxAction',
+				processData: false,
+				contentType: false,
+				data: formData,
+					type: 'POST',
+					dataType: 'json',
+					success: function(result) {
+						
+						console.log(result);
+						showUploadResult(result); // 업로드 결과 처리 함수
+						
+					}
+			});
+
+		});
+		
+		//섬네일 등을 만들어 처리하는 부분
+		function showUploadResult(uploadResultArr) {
+			
+			if(!uploadResultArr || uploadResultArr.length == 0) {return;}
+			
+			var uploadUL = $(".uploadResult ul");
+			
+			var str = "";
+			
+			$(uploadResultArr).each(function(i, obj) {
+				//image type
+				if(obj.fileType) {
+
+					var fileCallPath = encodeURIComponent(obj.uploadPath + "/s_" + obj.uuid + "_" + obj.fileName);
+
+					str += "<li>";
+					str += "	<div>";
+					str += "		<span>" + obj.fileName + "</span>";
+					str += "		<button type='button'>x</button><br>";
+					str += "		<img src='/display?fileName=" + fileCallPath + "'>";
+					str += "	</div>";
+					str += "</li>";
+					
+				} else {
+					
+					var fileCallPath = encodeURIComponent(obj.uploadPath + "/" + obj.uuid + "_" + obj.fileName);
+					var fileLink = fileCallPath.replace(new RegExp(/\\/g), "/");
+					
+					str += "<li>";
+					str += "	<div>";
+					str += "		<span>" + obj.fileName + "</span>";
+					str += "		<button type='button'>x</button><br>";
+					str += "		<a><img src='/resources/images/attach.png'></a>";
+					str += "	</div>";
+					str += "</li>";
+					
 				}
-				
-				if(document.boardfrm.password.value.trim() == "") {
-					alert('비밀번호를 입력하셔야 합니다.');
-					return false;				
-				}
-				
-				if(document.boardfrm.subject.value.trim() == "") {
-					alert('제목을 입력하셔야 합니다.');
-					return false;				
-				}	
-				
-				document.boardfrm.submit();
-			};
-		};
+			});
+			
+			uploadUL.append(str);
+		}
+		
+	
+	});
 	</script>
-</head>
 <body>
 	
 	<%@include file="../includes/header.jsp" %>
@@ -54,7 +165,7 @@
 	<div class="board-register wrapper">
 		<div class="register">
 		
-			<form action="/board/register" method="post" name="boardfrm">
+			<form action="/board/register" method="post" name="boardfrm" role="form">
 				<div class="contents_sub">
 				<!--table-->
 					<div class="board_write">
@@ -77,12 +188,17 @@
 								<textarea name="content" class="board_editor_area"></textarea>
 							</td>
 						</tr>
-						<!-- 
 						<tr>
 							<th>파일첨부</th>
-							<td colspan="3"><input type="file" name="upload" value="" class="board_write_file" /></td>
+							<td colspan="3">
+								<input class="board_write_file" type="file" name="uploadFile" multiple />
+								<div class="uploadResult">
+									<ul>
+									
+									</ul>
+								</div>
+							</td>
 						</tr>
-						 -->
 						 <!-- 
 						<tr>
 							<th>이메일</th>

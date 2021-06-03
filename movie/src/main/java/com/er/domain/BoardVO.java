@@ -1,6 +1,7 @@
 package com.er.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 
@@ -20,4 +21,5 @@ public class BoardVO {
 	//댓글 수 (반정규화)
 	private int replyCnt;
 
+	private List<BoardAttachVO> attachList;
 }
