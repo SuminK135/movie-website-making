@@ -5,7 +5,7 @@
 
 	<insert id="insert">
 		insert into board2_attach (uuid, uploadpath, filename, filetype, seq)
-		values (#{uuid}, #{uploadpath},#{filename},#{filetype},#{seq})
+		values (#{uuid}, #{uploadPath},#{fileName},#{fileType},#{seq})
 	</insert>
 	
 	<delete id="delete">

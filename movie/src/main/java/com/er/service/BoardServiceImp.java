@@ -2,21 +2,30 @@ package com.er.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.er.domain.BoardVO;
 import com.er.domain.Paging;
+import com.er.mapper.BoardAttachMapper;
 import com.er.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class BoardServiceImp implements BoardService {
 	
+	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private BoardAttachMapper attachMapper;
+	
 /*
 	@Override
 	public List<BoardVO> getList() {
@@ -40,12 +49,23 @@ public class BoardServiceImp implements BoardService {
 		return mapper.getBoardTotalCount(pg);
 	}
 	
+	@Transactional
 	@Override
 	public void register(BoardVO board) {
 		// TODO Auto-generated method stub
 		log.info("register............" + board);
 		
 		mapper.insertSelectKey(board);
+		
+		if(board.getAttachList() == null || board.getAttachList().size() <= 0) {
+			return;
+		}
+		
+		board.getAttachList().forEach(attach -> {
+			attach.setSeq(board.getSeq());
+			attachMapper.insert(attach);
+		});
+			
 	}
 
 	@Override
