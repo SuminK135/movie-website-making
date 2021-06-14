@@ -56,6 +56,26 @@
 			
 			console.log("submit clicked");
 			
+			if(document.boardfrm.info.checked == false) {
+				alert('개인정보 수집 및 이용에 동의하셔야 합니다.');
+				return false;
+			}
+			
+			if(document.boardfrm.writer.value.trim() == "") {
+				alert('이름을 입력하셔야 합니다.');
+				return false;				
+			}
+			
+			if(document.boardfrm.password.value.trim() == "") {
+				alert('비밀번호를 입력하셔야 합니다.');
+				return false;				
+			}
+			
+			if(document.boardfrm.subject.value.trim() == "") {
+				alert('제목을 입력하셔야 합니다.');
+				return false;				
+			}
+			
 			var str = "";
 			
 			$(".uploadResult ul li").each(function(i, obj) {
@@ -195,6 +215,8 @@
 		});
 		
 		
+		
+		
 	
 	});
 	</script>
@@ -213,7 +235,7 @@
 						<table>
 						<tr>
 							<th class="top">글쓴이</th>
-							<td class="top" colspan="3"><input type="text" name="writer" value="" class="board_write_input_100" maxlength="5" /></td>
+							<td class="top" colspan="3"><input type="text" name="writer" value="" class="board_write_input_100" maxlength="20" /></td>
 						</tr>
 						<tr>
 							<th>제목</th>

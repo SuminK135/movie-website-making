@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.er.domain.BoardAttachVO;
 import com.er.domain.BoardVO;
 import com.er.domain.Paging;
 import com.er.mapper.BoardAttachMapper;
@@ -94,6 +95,14 @@ public class BoardServiceImp implements BoardService {
 		log.info("delete............" + board);
 		
 		return mapper.delete(board) == 1;
+	}
+
+	@Override
+	public List<BoardAttachVO> getAttachList(int seq) {
+		// TODO Auto-generated method stub
+		log.info("Get attach list by seq: " + seq);
+		
+		return attachMapper.findBySeq(seq);
 	}
 	
 }

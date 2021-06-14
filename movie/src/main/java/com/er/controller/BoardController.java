@@ -1,5 +1,10 @@
 package com.er.controller;
 
+import java.util.List;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.er.domain.BoardAttachVO;
 import com.er.domain.BoardVO;
 import com.er.domain.PageDTO;
 import com.er.domain.Paging;
@@ -81,6 +88,16 @@ public class BoardController {
 		
 		model.addAttribute("board", service.get(seq));
 	}
+	
+	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<BoardAttachVO>> getAttachList(int seq) {
+		
+		log.info("getAttachList: " + seq);
+		
+		return new ResponseEntity<>(service.getAttachList(seq), HttpStatus.OK);
+	}
+	
 	
 	@GetMapping("/modify")
 	public void modify(@RequestParam("seq") int seq, @ModelAttribute("pg") Paging pg,  Model model) {

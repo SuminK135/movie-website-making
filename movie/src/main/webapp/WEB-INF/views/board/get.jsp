@@ -26,6 +26,55 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			
+			//start function
+			(function() {
+				
+				var seq = '<c:out value="${board.seq}"/>';
+				
+				$.getJSON("/board/getAttachList", {seq: seq}, function(arr) {
+					
+					console.log(arr);
+					
+					var str = "";
+					
+					$(arr).each(function(i, attach) {
+						
+						//image type
+						if(attach.fileType) {
+							
+							//var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_" + attach.uuid + "_" + attach.fileName);
+							var fileCallPathOriginal = encodeURIComponent(attach.uploadPath + "/" + attach.uuid + "_" + attach.fileName);
+							
+							str += "<li style='list-style: none;' data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' data-type='" + attach.fileType + "'>";
+							str += "<div>";
+							str += "<img src='/display?fileName=" + fileCallPathOriginal + "'>";
+							str += "</div>";
+							str += "</li>";
+							
+						} else {
+							
+							str += "<li style='list-style: none;' data-path='" + attach.uploadPath + "' data-uuid='" + attach.uuid + "' data-filename='" + attach.fileName + "' data-type='" + attach.fileType + "'>";
+							str += "<div>";
+							str += "<img src='/resources/images/attach.png'><span>" + attach.fileName + "</span><br>";
+							str += "</div>";
+							str += "</li>";
+							
+						}
+						
+					});
+					
+					$(".uploadResult ul").html(str);
+					
+				});
+			
+			})();
+			// end function
+			
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			
 			$("#dialog").dialog({ autoOpen: false });
 			$("#dialog2").dialog({ autoOpen: false });
 			
@@ -426,10 +475,13 @@
 						</tr>
 						<tr>
 							<td colspan="4" height="200" valign="top" style="padding: 20px; line-height: 160%">
-								<div id="bbs_file_wrap" align="left">
-									<div>
-										<img src="./upload/" width="550" onerror="" /><br />
+								<div class="bigPictureWrapper" align="left">
+									<div class="bigPicture">
 									</div>
+								</div>
+								<div class="uploadResult">
+									<ul>
+									</ul>
 								</div>
 								<br>
 								<div style="white-space: pre;">${board.content }</div>
