@@ -12,4 +12,6 @@ public interface BoardAttachMapper {
 	
 	List<BoardAttachVO> findBySeq(int seq);
 	
+	void deleteAll(int seq);
+	
 }

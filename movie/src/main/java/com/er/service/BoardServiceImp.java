@@ -89,10 +89,13 @@ public class BoardServiceImp implements BoardService {
 		return mapper.update(board) == 1;
 	}
 
+	@Transactional
 	@Override
 	public boolean remove(BoardVO board) {
 		// TODO Auto-generated method stub
 		log.info("delete............" + board);
+		
+		attachMapper.deleteAll(board.getSeq());
 		
 		return mapper.delete(board) == 1;
 	}

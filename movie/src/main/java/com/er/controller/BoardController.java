@@ -1,5 +1,9 @@
 package com.er.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -140,7 +144,12 @@ public class BoardController {
 		
 		log.info("remove....." + board);
 		
+		List<BoardAttachVO> attachList = service.getAttachList(board.getSeq());
+		
 		if(service.remove(board)) {
+			
+			deleteFiles(attachList); // Delete Attach Files
+			
 			rttr.addFlashAttribute("result", "success");
 		}
 		
@@ -151,6 +160,39 @@ public class BoardController {
 		//rttr.addAttribute("keyword", pg.getKeyword());
 		
 		return "redirect:/board/list" + pg.getListLink();
+		
+	}
+	
+	
+	private void deleteFiles(List<BoardAttachVO> attachList) {
+		
+		if(attachList == null || attachList.size() == 0) {
+			return;
+		}
+		
+		log.info("Delete attach files....................");
+		log.info(attachList);
+		
+		attachList.forEach(attach -> {
+			
+			try {
+				
+				Path file = Paths.get("C:\\upload\\" + attach.getUploadPath() + "\\" + attach.getUuid() + "_" + attach.getFileName());
+				
+				Files.deleteIfExists(file);
+				
+				if(Files.probeContentType(file).startsWith("image")) {
+					Path thumbNail = Paths.get("C:\\upload\\" + attach.getUploadPath() + "\\s_" + attach.getUuid() + "_" + attach.getFileName());
+					
+					Files.delete(thumbNail);
+				}
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				log.error("Delete file error: " + e.getMessage());
+			}
+			
+		});
 		
 	}
 	

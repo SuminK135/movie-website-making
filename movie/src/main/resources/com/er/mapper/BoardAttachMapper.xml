@@ -16,4 +16,8 @@
 		select * from board2_attach where seq = #{seq}
 	</select>
 	
+	<delete id="deleteAll">
+		delete from board2_attach where seq = #{seq}
+	</delete>
+	
 </mapper>
